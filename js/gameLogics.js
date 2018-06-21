@@ -3,7 +3,7 @@ var gameState = {preload:precarregarGame, create:criarGame, update:atualizarGame
 var mage,anim,plataformas,background;
 
 function precarregarGame(){
-        game.load.spritesheet('mage', 'assets/mage.png', 32, 48);
+        game.load.spritesheet('mage', 'assets/mage.png', 110, 140);
         game.load.image('chao1', 'assets/chao1.png');
         game.load.image('chao2','assets/chao2.png');
         game.load.image('chao3', 'assets/chao3.png');
