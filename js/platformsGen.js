@@ -18,7 +18,7 @@
     chao3.body.setSize(90, 30, 30, 35);
     chao4.body.setSize(90, 30, 30, 35);
 
-    game.time.events.loop(Phaser.Timer.SECOND * 2, movePlatforms, this); 
+   var loopPlatforms = game.time.events.loop(Phaser.Timer.SECOND * 2, movePlatforms, this); 
     
     var cont = 'up';
     function movePlatforms(){
