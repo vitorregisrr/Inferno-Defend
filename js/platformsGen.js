@@ -1,4 +1,5 @@
  /* Plataformas */
+ var chao1,chao2,chao3,chao4;
  function platformsGen(){
     plataformas = game.add.group();
     plataformas.enableBody = true;

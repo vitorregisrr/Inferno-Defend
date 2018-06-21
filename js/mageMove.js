@@ -1,4 +1,4 @@
-
+var mage;
  function mageMove(){
     /* Movimentacao mage */
     mage.body.velocity.x = 0;

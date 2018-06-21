@@ -1,6 +1,6 @@
 var gameState = {preload:precarregarGame, create:criarGame, update:atualizarGame };
 
-var mage,anim,plataformas,background,cursors,chao1,chao2,chao3,chao4;
+var anim,plataformas,background,cursors;
 
 function precarregarGame(){
         game.load.spritesheet('mage', 'assets/dude.png', 32, 48);
@@ -8,6 +8,7 @@ function precarregarGame(){
         game.load.image('chao2','assets/chao2.png');
         game.load.image('chao3', 'assets/chao3.png');
         game.load.spritesheet('background', 'assets/background.png',800,600,8);
+        game.load.image('bullet', 'assets/purple_ball.png');
 }
 
 function criarGame(){
@@ -20,14 +21,22 @@ function criarGame(){
 
     platformsGen();
     personagemGen();
+    bulletsGen();
     
 }
 
 function atualizarGame(){
- 
-
     
     mageMove();
+
     /* PERSONAGENS E PLATAFORMAS COLISAO*/
     var colideplataforma = game.physics.arcade.collide(mage, plataformas);
+
+    /*chama a funcao shot ao clicar */
+    
+    if (game.input.activePointer.isDown)
+    {
+        
+        fire();
+    }
 }
