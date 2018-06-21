@@ -1,6 +1,6 @@
 
  function personagemGen(){
-    mage = game.add.sprite(650,500, 'mage');
+    mage = game.add.sprite(650,100, 'mage');
 
             
         /*MAGE FISICA */
@@ -9,8 +9,7 @@
         mage.body.gravity.y = 300; //gravidade
         mage.body.collideWorldBounds = true; //habilita a colisão
 
-       /* ANIMACAO DOS PERSONAGENS */
-      mage.animations.add('left', [0, 1, 2, 3, 4, 5, 6], 0, true);
-      mage.animations.add('right', [7, 8, 9,], 34, true);
+        mage.animations.add('left', [0, 1, 2, 3], 10, true);
+        mage.animations.add('right', [5, 6, 7, 8], 10, true);
        
 }
