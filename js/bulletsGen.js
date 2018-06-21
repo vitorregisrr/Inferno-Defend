@@ -11,8 +11,7 @@ function bulletsGen(){
     bullets.setAll('checkWorldBounds', true);
     bullets.setAll('outOfBoundsKill', true);
     game.physics.enable(bullets, Phaser.Physics.ARCADE);
-    bullets.anchor.set(0.5);
-    bullets.body.allowRotation = true;
+    
     
 }
 

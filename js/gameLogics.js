@@ -9,6 +9,7 @@ function precarregarGame(){
         game.load.image('chao3', 'assets/chao3.png');
         game.load.spritesheet('background', 'assets/background.png',800,600,8);
         game.load.image('bullet', 'assets/purple_ball.png');
+        game.load.spritesheet('monstro1', 'assets/monstro1.png',100,90);
 }
 
 function criarGame(){
@@ -22,6 +23,7 @@ function criarGame(){
     platformsGen();
     personagemGen();
     bulletsGen();
+    enemiesGen();
     
 }
 
@@ -36,7 +38,6 @@ function atualizarGame(){
     
     if (game.input.activePointer.isDown)
     {
-        
         fire();
     }
 }
