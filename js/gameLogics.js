@@ -18,6 +18,7 @@ function criarGame(){
     anim.play(10,true);
 
     platformsGen();
+    personagemGen();
     
 }
 
