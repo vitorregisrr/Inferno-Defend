@@ -1,11 +1,10 @@
 var fireRate = 300;
 var nextFire = 0;
-
+var bullets,bullet;
 function bulletsGen(){
 
     bullets = game.add.group();
     bullets.enableBody = true;
-    bullets.physicsBodyType = Phaser.Physics.ARCADE;
 
     bullets.createMultiple(50, 'bullet');
     bullets.setAll('checkWorldBounds', true);
@@ -21,9 +20,9 @@ function fire() {
     {
     
         nextFire = game.time.now + fireRate;
-        var bullet = bullets.getFirstDead();
+        bullet = bullets.getFirstDead();
 
-        bullet.reset(mage.x - 8, mage.y - 8);
+        bullet.reset(mage.x, mage.y - 8);
 
         game.physics.arcade.moveToPointer(bullet, 370);
     }
