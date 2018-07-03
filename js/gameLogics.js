@@ -23,14 +23,17 @@ function criarGame(){
     platformsGen();
     personagemGen();
     bulletsGen();
-    enemiesGen();
+    monstro1Gen();
     
 }
 
+
 function atualizarGame(){
-    
     mageMove();
-    game.physics.arcade.moveToObject(monstro1, mage, 200);
+    
+    monstros1.forEachAlive(function(monstro1){   game.physics.arcade.moveToObject(monstro1, mage, monstro1Speed)   });
+    monstros1.forEachAlive(function(monstro1){   game.physics.arcade.overlap(bullets, monstro1, function(){ monstro1.kill(); bullet.kill(); },null, this); });
+
     /* PERSONAGENS E PLATAFORMAS COLISAO*/
     var colideplataforma = game.physics.arcade.collide(mage, plataformas);
 
@@ -42,7 +45,12 @@ function atualizarGame(){
     }
 
     game.physics.arcade.overlap(bullets, plataformas, function(){bullet.kill()},null, this);
-    game.physics.arcade.overlap(bullets, monstros1, function(){ monstro1.kill();},null, this);
-    game.physics.arcade.overlap(mage, monstros1, function(){},null, this);
+
+    game.physics.arcade.overlap(mage, monstros1, gameOver,null, this);
+    
+    if(mage.body.blocked.down){
+        gameOver();
+    }
+    
     
 }

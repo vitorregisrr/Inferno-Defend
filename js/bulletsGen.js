@@ -1,4 +1,4 @@
-var fireRate = 300;
+var fireRate = 400;
 var nextFire = 0;
 var bullets,bullet;
 function bulletsGen(){
@@ -21,9 +21,7 @@ function fire() {
     
         nextFire = game.time.now + fireRate;
         bullet = bullets.getFirstDead();
-
         bullet.reset(mage.x, mage.y - 8);
-
         game.physics.arcade.moveToPointer(bullet, 370);
     }
 

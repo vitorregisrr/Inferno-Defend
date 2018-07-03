@@ -14,9 +14,9 @@ var mage;
         mage.frame = 4;
     }
 
-    if (cursors.up.isDown /*&& mage.body.touching.down*/){
+    if (cursors.up.isDown && game.physics.arcade.collide(mage, plataformas) ){
         mage.body.velocity.y = -350;
     } else if (cursors.down.isDown){
-        mage.body.velocity.y = 250;
+        mage.body.velocity.y = 450;
     }
 }
