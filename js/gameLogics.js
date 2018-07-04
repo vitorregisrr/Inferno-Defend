@@ -10,6 +10,7 @@ function precarregarGame(){
         game.load.spritesheet('background', 'assets/background.png',800,600,8);
         game.load.image('bullet', 'assets/purple_ball.png');
         game.load.spritesheet('monstro1', 'assets/monstro1.png',48,45);
+        game.load.audio('sfx', 'assets/audio/fx_mixdown.ogg');
 }
 
 function criarGame(){
@@ -24,6 +25,7 @@ function criarGame(){
     personagemGen();
     bulletsGen();
     monstro1Gen();
+    createAudios();
     
 }
 
@@ -32,7 +34,7 @@ function atualizarGame(){
     mageMove();
     
     monstros1.forEachAlive(function(monstro1){   game.physics.arcade.moveToObject(monstro1, mage, monstro1Speed)   });
-    monstros1.forEachAlive(function(monstro1){   game.physics.arcade.overlap(bullets, monstro1, function(){ monstro1.kill(); bullet.kill(); },null, this); });
+    monstros1.forEachAlive(function(monstro1){   game.physics.arcade.overlap(bullets, monstro1, function(){ monstro1.kill(); fx.play('squit'); bullet.kill(); },null, this); });
 
     /* PERSONAGENS E PLATAFORMAS COLISAO*/
     var colideplataforma = game.physics.arcade.collide(mage, plataformas);

@@ -18,9 +18,10 @@ function fire() {
 
     if (game.time.now > nextFire && bullets.countDead() > 0)
     {
-    
+
         nextFire = game.time.now + fireRate;
         bullet = bullets.getFirstDead();
+        fx.play('shot');
         bullet.reset(mage.x, mage.y - 8);
         game.physics.arcade.moveToPointer(bullet, 370);
     }
