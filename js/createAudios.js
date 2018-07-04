@@ -1,7 +1,8 @@
 var fx;
-function createAudios(){
+
+function createAudios() {
 	fx = game.add.audio('sfx');
-    fx.allowMultiple = true;
+	fx.allowMultiple = true;
 
 	fx.addMarker('alien death', 1, 1.0);
 	fx.addMarker('boss hit', 3, 0.5);

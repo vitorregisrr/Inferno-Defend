@@ -1,22 +1,22 @@
 var mage;
- function mageMove(){
+
+function mageMove() {
     /* Movimentacao mage */
     mage.body.velocity.x = 0;
-    if (cursors.left.isDown){
+    if (cursors.left.isDown) {
         mage.body.velocity.x = -150;
         mage.animations.play('left');
-    }
-    else if (cursors.right.isDown){
+    } else if (cursors.right.isDown) {
         mage.body.velocity.x = 150;
         mage.animations.play('right');
-    }else{
+    } else {
         mage.animations.stop();
         mage.frame = 4;
     }
 
-    if (cursors.up.isDown && game.physics.arcade.collide(mage, plataformas) ){
+    if (cursors.up.isDown && game.physics.arcade.collide(mage, plataformas)) {
         mage.body.velocity.y = -350;
-    } else if (cursors.down.isDown){
+    } else if (cursors.down.isDown) {
         mage.body.velocity.y = 450;
     }
 }

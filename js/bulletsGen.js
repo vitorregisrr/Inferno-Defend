@@ -1,7 +1,8 @@
 var fireRate = 400;
 var nextFire = 0;
-var bullets,bullet;
-function bulletsGen(){
+var bullets, bullet;
+
+function bulletsGen() {
 
     bullets = game.add.group();
     bullets.enableBody = true;
@@ -10,14 +11,13 @@ function bulletsGen(){
     bullets.setAll('checkWorldBounds', true);
     bullets.setAll('outOfBoundsKill', true);
     game.physics.enable(bullets, Phaser.Physics.ARCADE);
-    
-    
+
+
 }
 
 function fire() {
 
-    if (game.time.now > nextFire && bullets.countDead() > 0)
-    {
+    if (game.time.now > nextFire && bullets.countDead() > 0) {
 
         nextFire = game.time.now + fireRate;
         bullet = bullets.getFirstDead();
