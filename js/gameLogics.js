@@ -5,6 +5,12 @@ var gameState = {
 
 var anim, plataformas, background, cursors;
 
+/*controles WASD */
+var upButton;
+var downButton;
+var leftButton;
+var rightButton;
+
 
 function criarGame() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -13,6 +19,12 @@ function criarGame() {
     background = game.add.sprite(0, 0, 'background');
     anim = background.animations.add('lava');
     anim.play(10, true);
+
+    /*controles WASD */
+    upButton = game.input.keyboard.addKey(Phaser.Keyboard.W);
+    downButton = game.input.keyboard.addKey(Phaser.Keyboard.S);
+    leftButton = game.input.keyboard.addKey(Phaser.Keyboard.A);
+    rightButton = game.input.keyboard.addKey(Phaser.Keyboard.D);
 
     platformsGen();
     personagemGen();
