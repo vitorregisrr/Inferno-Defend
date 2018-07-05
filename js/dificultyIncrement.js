@@ -1,26 +1,34 @@
+function dificultyIncrement(){
 
-    //muda para dificuldade 2 15s de jogo
-    loopMonstro1 = window.setInterval(setDificulty2, 15000);
+    if(!gameOverStatus){
+        monstro1Speed = 90;
+        monstro1Interval = 3000; //seta a dificuldade inicial 
 
-    //muda para dificuldade 3 em 40s de jogo
-    loopMonstro1 = window.setInterval(setDificulty3, 40000);
+        console.log('increment loaded');
+        //muda para dificuldade 2 15s de jogo
+        window.setTimeout(setDificulty2, 15000);
 
-    //muda para dificuldade 4 em 1min de game
-    loopMonstro1 = window.setInterval(setDificulty4, 60000);
+        //muda para dificuldade 3 em 40s de jogo
+        window.setTimeout(setDificulty3, 20000);
 
+        //muda para dificuldade 4 em 1min de game
+        window.setTimeout(setDificulty4, 130000);
+    }
+}
 
-
-    function setDificulty2(){
+function setDificulty2(){
         monstro1Speed = 150;
         monstro1Interval = 2000;
-    }
 
-    function setDificulty3(){
+}
+
+function setDificulty3(){
         monstro1Speed = 200;
         monstro1Interval = 1500;
-    }
+}
 
-    function setDificulty4(){
-        monstro1Speed = 270;
-        monstro1Interval = 800;
-    }
+function setDificulty4(){
+        monstro1Speed = 230;
+        monstro1Interval = 1300;
+
+}

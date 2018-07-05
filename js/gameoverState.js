@@ -17,9 +17,13 @@ function criarGameOver()
 }
 
 function replay() {
+    gameOverStatus = false;
     game.state.start('startState');
 }
 
+var gameOverStatus;
 function gameOver() {
+    gameOverStatus = true;
+    clearInterval(loopMonstro1);
     game.state.start('gameoverState');
 }

@@ -1,21 +1,10 @@
 var gameState = {
-    preload: precarregarGame,
     create: criarGame,
-    update: atualizarGame
+    update: atualizarGame,
 };
 
 var anim, plataformas, background, cursors;
 
-function precarregarGame() {
-    game.load.spritesheet('mage', 'assets/dude.png', 32, 48);
-    game.load.image('chao1', 'assets/chao1.png');
-    game.load.image('chao2', 'assets/chao2.png');
-    game.load.image('chao3', 'assets/chao3.png');
-    game.load.spritesheet('background', 'assets/background.png', 800, 600, 8);
-    game.load.image('bullet', 'assets/purple_ball.png');
-    game.load.spritesheet('monstro1', 'assets/monstro1.png', 48, 45);
-    game.load.audio('sfx', 'assets/audio/fx_mixdown.ogg');
-}
 
 function criarGame() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -66,7 +55,7 @@ function atualizarGame() {
     }, null, this);
 
     //mata o mago se encostar no monstro1
-    game.physics.arcade.overlap(mage, monstros1, gameOver, null, this);
+    //game.physics.arcade.overlap(mage, monstros1, gameOver, null, this);
 
     //mata o mago se cair
     if (mage.body.blocked.down) {
