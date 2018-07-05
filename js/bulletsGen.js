@@ -1,4 +1,4 @@
-var fireRate = 400;
+var fireRate = 800;
 var nextFire = 0;
 var bullets, bullet;
 
@@ -23,7 +23,7 @@ function fire() {
         bullet = bullets.getFirstDead();
         fx.play('shot');
         bullet.reset(mage.x, mage.y - 8);
-        game.physics.arcade.moveToPointer(bullet, 370);
+        game.physics.arcade.moveToPointer(bullet, 400);
     }
 
 }
