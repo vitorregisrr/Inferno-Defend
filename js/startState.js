@@ -10,6 +10,7 @@ function criarStart()
 }
 
 function start(){
-    monstro1Speed = 90; //seta a dificuldade inicial 
+    monstro1Speed = 90;
+    monstro1Interval = 3000; //seta a dificuldade inicial 
     game.state.start('gameState');
 }
