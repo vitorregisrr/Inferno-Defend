@@ -20,6 +20,7 @@ function setDificulty2(){
         monstro1Speed = 150;
         monstro1Interval = 2000;
         fireRate = 700;
+        console.log('dificuldade 2')
 
 }
 
@@ -27,11 +28,13 @@ function setDificulty3(){
         monstro1Speed = 200;
         monstro1Interval = 1500;
         fireRate = 600;
+        console.log('dificuldade 2')
 }
 
 function setDificulty4(){
         monstro1Speed = 230;
         monstro1Interval = 1300;
         fireRate = 500;
+        console.log('dificuldade 2')
 
 }

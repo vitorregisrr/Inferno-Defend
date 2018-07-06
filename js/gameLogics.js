@@ -3,7 +3,8 @@ var gameState = {
     update: atualizarGame,
 };
 
-var anim, plataformas, background, cursors;
+var anim, plataformas, background, cursors, score;
+score = 0;
 
 /*controles WASD */
 var upButton;
@@ -47,6 +48,7 @@ function atualizarGame() {
     monstros1.forEachAlive(function (monstro1) {
         game.physics.arcade.overlap(bullets, monstro1, function () {
             monstro1.kill();
+            score++;
             fx.play('squit');
             bullet.kill();
         }, null, this);
@@ -67,7 +69,7 @@ function atualizarGame() {
     }, null, this);
 
     //mata o mago se encostar no monstro1
-    //game.physics.arcade.overlap(mage, monstros1, gameOver, null, this);
+    game.physics.arcade.overlap(mage, monstros1, gameOver, null, this);
 
     //mata o mago se cair
     if (mage.body.blocked.down) {
