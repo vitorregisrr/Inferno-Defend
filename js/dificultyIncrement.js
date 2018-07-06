@@ -2,7 +2,7 @@ function dificultyIncrement(){
 
     if(!gameOverStatus){
         monstro1Speed = 90;
-        monstro1Interval = 3000; //seta a dificuldade inicial 
+        monstro1Interval = 2500; //seta a dificuldade inicial 
 
         console.log('increment loaded');
         //muda para dificuldade 2 15s de jogo
@@ -25,14 +25,14 @@ function setDificulty2(){
 }
 
 function setDificulty3(){
-        monstro1Speed = 200;
+        monstro1Speed = 170;
         monstro1Interval = 1500;
         fireRate = 600;
         console.log('dificuldade 2')
 }
 
 function setDificulty4(){
-        monstro1Speed = 230;
+        monstro1Speed = 190;
         monstro1Interval = 1300;
         fireRate = 500;
         console.log('dificuldade 2')
