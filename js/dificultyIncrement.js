@@ -1,40 +1,40 @@
 function dificultyIncrement(){
+        
+        game.physics.arcade.overlap(portal1, mage, setDificulty2, null, this);
 
-    if(!gameOverStatus){
-        monstro1Speed = 90;
-        monstro1Interval = 2500; //seta a dificuldade inicial 
+        game.physics.arcade.overlap(portal2, mage, setDificulty3, null, this);
 
-        console.log('increment loaded');
-        //muda para dificuldade 2 15s de jogo
-        window.setTimeout(setDificulty2, 15000);
+        game.physics.arcade.overlap(portal3, mage, setDificulty4, null, this);
 
-        //muda para dificuldade 3 em 40s de jogo
-        window.setTimeout(setDificulty3, 20000);
+        game.physics.arcade.overlap(portal4, mage, gameOver , null, this);
 
-        //muda para dificuldade 4 em 1min de game
-        window.setTimeout(setDificulty4, 130000);
-    }
+}
+
+function setDificulty1(){
+        monstro1Speed = 120;
+        monstro1Interval = 3000;
+        console.log('dificuldade 1')
 }
 
 function setDificulty2(){
         monstro1Speed = 150;
-        monstro1Interval = 2000;
-        fireRate = 700;
+        monstro1Interval = 2500;
         console.log('dificuldade 2')
+        game.state.start('gameState2');
 
 }
 
 function setDificulty3(){
         monstro1Speed = 170;
-        monstro1Interval = 1500;
-        fireRate = 600;
-        console.log('dificuldade 2')
+        monstro1Interval = 2000;
+        console.log('dificuldade 3')
+        game.state.start('gameState3');
 }
 
 function setDificulty4(){
         monstro1Speed = 190;
-        monstro1Interval = 1300;
-        fireRate = 500;
-        console.log('dificuldade 2')
+        monstro1Interval = 1800;
+        console.log('dificuldade 4')
+        game.state.start('gameState4');
 
 }

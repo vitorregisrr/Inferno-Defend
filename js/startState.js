@@ -10,6 +10,7 @@ function precarregarGame() {
     game.load.spritesheet('monstro1', 'assets/monstro1.png', 48, 45);
     game.load.audio('sfx', 'assets/audio/fx_mixdown.ogg');
     game.load.image('logo', 'assets/logo.png');
+    game.load.image('portal', 'assets/portal.png');
 }
 
 
@@ -29,6 +30,6 @@ function criarStart()
 
 
 function start(){
-    dificultyIncrement(); //começa a aumentar a dificuldade quando é dado o play
-    game.state.start('gameState');
+    game.state.start('gameState1');
+    setDificulty1();
 }

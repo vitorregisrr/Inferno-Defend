@@ -1,5 +1,5 @@
 function personagemGen() {
-    mage = game.add.sprite(650, 100, 'mage');
+    mage = game.add.sprite(650, 400, 'mage');
 
 
     /*MAGE FISICA */
@@ -11,4 +11,15 @@ function personagemGen() {
     mage.animations.add('left', [0, 1, 2, 3], 10, true);
     mage.animations.add('right', [5, 6, 7, 8], 10, true);
 
+}
+
+function mageDead(){
+    
+    //mata o mago se encostar no monstro1
+    game.physics.arcade.overlap(mage, monstros1, gameOver, null, this);
+
+    //mata o mago se cair
+    if (mage.body.blocked.down) {
+        gameOver();
+    }
 }

@@ -1,5 +1,11 @@
 var mage;
 
+/*controles WASD */
+var upButton;
+var downButton;
+var leftButton;
+var rightButton;
+
 function mageMove() {
     /* Movimentacao mage */
     mage.body.velocity.x = 0;
@@ -21,7 +27,7 @@ function mageMove() {
 
     if ((cursors.up.isDown || upButton.isDown) && game.physics.arcade.collide(mage, plataformas)) {
 
-        mage.body.velocity.y = -350;
+        mage.body.velocity.y = -200;
 
     } else if (cursors.down.isDown || downButton.isDown) {
 

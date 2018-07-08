@@ -27,3 +27,28 @@ function fire() {
     }
 
 }
+
+
+function bulletsCollide(){
+
+      /*chama a funcao shot ao clicar */
+    if (game.input.activePointer.isDown) {
+        fire();
+    }
+
+    //morte do monstro1 ao encostar na bullet
+    monstros1.forEachAlive(function (monstro1) {
+        game.physics.arcade.overlap(bullets, monstro1, function () {
+            monstro1.kill();
+            score++;
+            fx.play('squit');
+            bullet.kill();
+        }, null, this);
+    });
+
+      //colisao entre bullets e plataformas
+      game.physics.arcade.overlap(bullets, plataformas, function () {
+        bullet.kill()
+    }, null, this);
+
+}

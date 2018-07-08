@@ -1,7 +1,7 @@
  /* Plataformas */
- var chao1, chao2, chao3, chao4;
+ var chao1, chao2, chao3, chao4, portal1;
 
- function platformsGen() {
+ function platforms1Gen() {
      plataformas = game.add.group();
      plataformas.enableBody = true;
 
@@ -19,6 +19,13 @@
      chao3.body.setSize(90, 30, 30, 35);
      chao4.body.setSize(90, 30, 30, 35);
 
+
+     portal1 = game.add.sprite(60, 300, 'portal');
+     game.physics.arcade.enable(portal1);
+     portal1.body.immovable = true;
+     portal1.body.setSize(30, 30, 30, 35);
+     portal1.body.gravity.y = 300; //gravidade
+     portal1.body.collideWorldBounds = true; //habilita a colisão
 
      //move as plataformas para cima e para baixo, usando um contador que reveza entre up e down
      var loopPlatforms = game.time.events.loop(Phaser.Timer.SECOND * 2, movePlatforms, this);

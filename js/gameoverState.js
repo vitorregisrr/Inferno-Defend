@@ -26,9 +26,7 @@ function replay() {
     score = 0;
 }
 
-var gameOverStatus;
 function gameOver() {
-    gameOverStatus = true;
     clearInterval(loopMonstro1);
     game.state.start('gameoverState');
 }
