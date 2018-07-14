@@ -36,7 +36,7 @@ function bossGen(){
         boss.body.immovable = true;
 
         var flyBoss = boss.animations.add('bossFly');
-        boss.animations.play('bossFly', 10, true);
+        boss.animations.play('bossFly', 12, true);
         boss.body.setSize(boss.height - 190, boss.width - 160,180,20);
         
 }

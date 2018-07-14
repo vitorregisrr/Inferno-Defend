@@ -63,15 +63,15 @@ function portalGen(x,y){
 
     lava = lavaGroup.create(0, 530, 'lava');
      animLava = lava.animations.add('animLava');
-     animLava.play(5, true);
+     animLava.play(10, true);
 
 
     lava = lavaGroup.create(296, 530, 'lava');
      animLava = lava.animations.add('animLava');
-     animLava.play(5, true);
+     animLava.play(10, true);
 
     lava = lavaGroup.create(592, 530, 'lava');
      animLava = lava.animations.add('animLava');
-     animLava.play(5, true);
+     animLava.play(10, true);
 
  }

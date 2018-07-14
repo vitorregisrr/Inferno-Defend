@@ -63,7 +63,7 @@ function bulletsCollide(){
        bulletsKnife.forEachAlive(function (bulletKnife) {
             game.physics.arcade.collide(bulletKnife, boss, function () {
                 bulletKnife.kill();
-                bossShoted();
+                bossShoted(1);
             }, null, this);
         });
     
