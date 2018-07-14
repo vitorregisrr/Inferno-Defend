@@ -1,4 +1,5 @@
-var game = new Phaser.Game(800, 600, Phaser.AUTO);
+var game = new Phaser.Game(800, 600, Phaser.WEBGL,'#game');
+
 
 game.state.add('gameState1', gameState1);
 game.state.add('gameState2', gameState2);
