@@ -22,10 +22,12 @@ function createAudios() {
 	sounds.atacked = game.add.audio('atacked');
 	sounds.knife = game.add.audio('knife');
 	sounds.enterPortal = game.add.audio('enterPortal');
+	sounds.bossScreamPain = game.add.audio('bossScreamPain');
 
 	sounds.bossFlying.volume = 0.1;
 	sounds.lava.volume = 0.1;
 	sounds.bossAtack.volume = 0.1;
 	sounds.bossScream.volume = 0.2;
+	sounds.bossScreamPain.volume = 0.6;
 
 }

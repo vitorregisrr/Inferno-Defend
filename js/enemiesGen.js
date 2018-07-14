@@ -57,7 +57,7 @@ function bossShoted(dano){
         bossHp -= dano;
         if(bossHp == 0){
             game.time.events.remove(loopBossAttack);
-
+            sounds.bossScreamPain.play();
             bossHpBar.frame = 1;
             //saida do boss do cenário
             game.physics.arcade.moveToXY(boss, 0 -200 , 0 - 300 ,300, 3000);

@@ -24,6 +24,7 @@ function precarregarPreload() {
     game.load.audio('bossFlying', ['assets/audio/bossFlying.ogg']);
     game.load.audio('bossAtack', ['assets/audio/bossAtack.ogg']);
     game.load.audio('bossScream', 'assets/audio/bossScream.ogg');
+    game.load.audio('bossScreamPain', 'assets/audio/bossScreamPain.ogg');
     game.load.audio('atacked', ['assets/audio/atacked.ogg']);
     game.load.audio('sfx', 'assets/audio/fx_mixdown.ogg');
     game.load.audio('enterPortal', 'assets/audio/enterPortal.ogg');
