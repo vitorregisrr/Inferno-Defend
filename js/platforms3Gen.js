@@ -16,7 +16,7 @@
      //move as plataformas para cima e para baixo, usando um contador que reveza entre up e down
      var loopPlatforms = game.time.events.loop(Phaser.Timer.SECOND * 1, movePlatforms3, this);
      var cont = 'up';
-
+     
      function movePlatforms3() {
          if (cont == 'up') {
              chao1.body.velocity.y = -20;

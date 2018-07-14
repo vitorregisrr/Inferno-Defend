@@ -39,6 +39,6 @@ function criarStart()
 
 
 function start(){
-    game.state.start('gameState4');
+    game.state.start('gameState1');
     setDificulty1();
 }
