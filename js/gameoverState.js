@@ -29,4 +29,8 @@ function replay() {
 function gameOver() {
     clearInterval(loopMonstro1);
     game.state.start('gameoverState');
+    sounds.lava.mute = true;
+    sounds.bossFlying.mute = true;
+    sounds.lava.mute = true;
+
 }

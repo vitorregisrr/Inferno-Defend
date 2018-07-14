@@ -36,7 +36,7 @@ function bossGen(){
         boss.body.collideWorldBounds = false; //habilita a colisão
 
         var flyBoss = boss.animations.add('bossFly');
-        boss.animations.play('bossFly', 12, true);
+        boss.animations.play('bossFly', 15, true);
         boss.body.setSize(boss.height - 190, boss.width - 160,180,20);
 
         game.time.events.add(900, function () {
@@ -44,6 +44,8 @@ function bossGen(){
                 game.time.events.add(4000, function () {
                     boss.body.velocity.y = 0;
                     boss.body.velocity.x = 0;
+                    boss.animations.stop();
+                    boss.animations.play('bossFly', 10, true);
                  }, this);
         }, this)
 
@@ -60,6 +62,8 @@ function bossShoted(dano){
             sounds.bossScreamPain.play();
             bossHpBar.frame = 1;
             //saida do boss do cenário
+            boss.animations.stop();
+            boss.animations.play('bossFly', 13, true);
             game.physics.arcade.moveToXY(boss, 0 -200 , 0 - 300 ,300, 3000);
             boss.body.collideWorldBounds = false;
             setTimeout(function(){ boss.kill(); 
