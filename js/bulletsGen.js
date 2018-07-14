@@ -1,28 +1,28 @@
 var fireRate = 400;
 var nextFire = 0;
-var bullets, bullet;
+var bulletsKnife, bulletKnife;
 function bulletsGen() {
 
-    bullets = game.add.group();
-    bullets.enableBody = true;
+    bulletsKnife = game.add.group();
+    bulletsKnife.enableBody = true;
 
-    bullets.createMultiple(50, 'bullet');
-    bullets.setAll('checkWorldBounds', true);
-    bullets.setAll('outOfBoundsKill', true);
-    game.physics.enable(bullets, Phaser.Physics.ARCADE);
+    bulletsKnife.createMultiple(50, 'bullet');
+    bulletsKnife.setAll('checkWorldBounds', true);
+    bulletsKnife.setAll('outOfBoundsKill', true);
+    game.physics.enable(bulletsKnife, Phaser.Physics.ARCADE);
 
 
 }
 
 function fire() {
 
-    if (game.time.now > nextFire && bullets.countDead() > 0) {
+    if (game.time.now > nextFire && bulletsKnife.countDead() > 0) {
         nextFire = game.time.now + fireRate;
-        bullet = bullets.getFirstDead();
+        bulletKnife = bulletsKnife.getFirstDead();
         sounds.knife.play();
-        bullet.reset(mage.x + 5, mage.y + 12);
-        bullet.rotation = Math.atan2(game.input.mousePointer.y - bullet.y, game.input.mousePointer.x - bullet.x);
-        game.physics.arcade.moveToPointer(bullet, 400);
+        bulletKnife.reset(mage.x + 5, mage.y + 12);
+        bulletKnife.rotation = Math.atan2(game.input.mousePointer.y - bulletKnife.y, game.input.mousePointer.x - bulletKnife.x);
+        game.physics.arcade.moveToPointer(bulletKnife, 400);
     }
 
 }
@@ -37,11 +37,11 @@ function bulletsCollide(){
 
     //morte do monstro1 ao encostar na bullet
     monstros1.forEachAlive(function (monstro1) {
-        game.physics.arcade.overlap(bullets, monstro1, function () {
+        game.physics.arcade.overlap(bulletsKnife, monstro1, function () {
             monstro1.kill();
             score++;
             fx.play('squit');
-            bullet.kill();
+            bulletKnife.kill();
         }, null, this);
     });
 
@@ -60,9 +60,9 @@ function bulletsCollide(){
     });
 
       //colisao entre bullets e plataformas
-       bullets.forEachAlive(function (bullet) {
-            game.physics.arcade.collide(bullet, boss, function () {
-                bullet.kill();
+       bulletsKnife.forEachAlive(function (bulletKnife) {
+            game.physics.arcade.collide(bulletKnife, boss, function () {
+                bulletKnife.kill();
                 bossShoted();
             }, null, this);
         });

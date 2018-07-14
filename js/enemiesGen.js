@@ -41,8 +41,8 @@ function bossGen(){
         
 }
 
-function bossShoted(){
-        bossHp -= 1;
+function bossShoted(dano){
+        bossHp -= dano;
         if(bossHp == 0){
             boss.kill();
             game.time.events.remove(loopBossAttack);
