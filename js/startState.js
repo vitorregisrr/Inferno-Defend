@@ -10,10 +10,12 @@ function precarregarGame() {
     game.load.spritesheet('monstro1', 'assets/monstro1.png', 48, 45);
     game.load.audio('sfx', 'assets/audio/fx_mixdown.ogg');
     game.load.image('logo', 'assets/logo.png');
+    game.load.image('hpBarBoss', 'assets/hpBarBoss.png');
     game.load.spritesheet('portal', 'assets/portal.png', 60, 109, 9);
     game.load.spritesheet('lava', 'assets/lava.png', 296, 79, 4);
     game.load.spritesheet('boss', 'assets/boss.png', 360, 275, 6);
     game.load.spritesheet('bossBullet', 'assets/bossBullet.png', 60, 53, 30);
+    game.load.spritesheet('hpBar', 'assets/hpBar.png', 211, 70, 5);
     game.load.audio('lava', ['assets/audio/lava.ogg']);
     game.load.audio('bossFlying', ['assets/audio/bossFlying.ogg']);
     game.load.audio('bossAtack', ['assets/audio/bossAtack.ogg']);
@@ -41,4 +43,5 @@ function criarStart()
 function start(){
     game.state.start('gameState1');
     setDificulty1();
+    mageHp = 5;
 }

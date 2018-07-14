@@ -1,5 +1,5 @@
 var monstros1, monstro1, loopMonstro1, monstro1Speed, monstro1Interval;
-var boss,flyBoss,bulletBoss,bulletsBossGroup,loopBossAttack,bulletAnim,bulletAnimKill,bossHp;
+var boss,flyBoss,bulletBoss,bulletsBossGroup,loopBossAttack,bulletAnim,bulletAnimKill,bossHp,bossHpBar,bossHpBarText;
 function monstro1Gen() {
 
         monstros1 = game.add.group();
@@ -29,7 +29,7 @@ function monstro1Moviment(){
 
 function bossGen(){
         boss = game.add.sprite(30,30, 'boss');
-        bossHp = 10;
+        bossHp = 50;
          /*BOSS FISICA */
         game.physics.arcade.enable(boss);
         boss.body.collideWorldBounds = true; //habilita a colisão

@@ -9,6 +9,9 @@ function addControls(){
 }
 
 function mageMove() {
+
+    game.physics.arcade.overlap(mage, lavaGroup, gameOver, null, this);
+
     /* Movimentacao mage */
     mage.body.velocity.x = 0;
     if (cursors.left.isDown || leftButton.isDown) {

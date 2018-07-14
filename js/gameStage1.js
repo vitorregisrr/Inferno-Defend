@@ -21,6 +21,8 @@ function criarState1() {
     createAudios();
     setMage1();
     lavaCreate();
+
+    mageHpBar = game.add.sprite(20,20,'hpBar');
     
 
 }
@@ -28,7 +30,7 @@ function criarState1() {
 function atualizarState1() {
     mageMove();
     bulletsCollide();
-    mageDead();
+    mageHpBarChange();
     monstro1Moviment();
 
     /* PERSONAGENS E PLATAFORMAS COLISAO*/

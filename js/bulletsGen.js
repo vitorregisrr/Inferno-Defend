@@ -1,4 +1,4 @@
-var fireRate = 300;
+var fireRate = 400;
 var nextFire = 0;
 var bullets, bullet;
 function bulletsGen() {
@@ -46,7 +46,7 @@ function bulletsCollide(){
     });
 
     monstros1.forEachAlive(function (monstro1) {
-        game.physics.arcade.overlap(mage, monstro1, function () {
+        game.physics.arcade.collide(mage, monstro1, function () {
             monstro1.kill();
             mageShoted(1);
         }, null, this);

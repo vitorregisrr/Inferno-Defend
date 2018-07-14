@@ -1,20 +1,33 @@
-var chao1, chao2, chao3, chao4, chao5, chao6, chao7, chao7,chao8,chao9,chao10, lava,lavaGroup, portal;
+var lava,lavaGroup, portal;
+var plataformas, chao1, chao2, chao3, chao4, chao5, chao6, chao7, chao8, chao9, chao10;
 var animLava;
 
 function platformsCreate(){
     plataformas = game.add.group();
     plataformas.enableBody = true;
-     
+
     chao1 = plataformas.create(0, -323, 'chao1');
     chao2 = plataformas.create(0 - chao1.width,0 - chao1.height, 'chao1');
-    chao3 = plataformas.create(0 - chao1.width,0 - chao1.height, 'chao1');
-    chao4 = plataformas.create(0 - chao1.width,0 - chao1.height, 'chao1');
+    chao3 = plataformas.create(0 - chao1.width,0 - chao1.height, 'chao2');
+    chao4 = plataformas.create(0 - chao1.width,0 - chao1.height, 'chao2');
     chao5 = plataformas.create(0 - chao4.width,0 - chao4.height, 'chao1');
     chao6 = plataformas.create(0 - chao5.width,0 - chao5.height, 'chao2');
     chao7 = plataformas.create(0 - chao5.width,0 - chao5.height, 'chao2');
     chao8 = plataformas.create(0 - chao5.width,0 - chao5.height, 'chao1');
     chao9 = plataformas.create(0 - chao5.width,0 - chao5.height, 'chao1');
     chao10 = plataformas.create(0 - chao5.width,0 - chao5.height, 'chao2');
+
+    
+    chao1.body.setSize(120, 10, 8, 35);
+    chao2.body.setSize(120, 10, 8, 35);
+    chao3.body.setSize(120, 10, 8, 35);
+    chao4.body.setSize(120, 10, 8, 35);
+    chao5.body.setSize(120, 10, 8, 35);
+    chao6.body.setSize(120, 10, 8, 35);
+    chao7.body.setSize(120, 10, 8, 35);
+    chao8.body.setSize(120, 10, 8, 35);
+    chao9.body.setSize(120, 10, 8, 35);
+    chao10.body.setSize(120, 10, 8, 35);
 
     chao1.body.immovable = true;
     chao2.body.immovable = true;
@@ -27,17 +40,7 @@ function platformsCreate(){
     chao9.body.immovable = true;
     chao10.body.immovable = true;
 
-  
-    chao1.body.setSize(120, 10, 8, 35);
-    chao2.body.setSize(120, 10, 8, 35);
-    chao3.body.setSize(120, 10, 8, 35);
-    chao4.body.setSize(120, 10, 8, 35);
-    chao5.body.setSize(120, 10, 8, 35);
-    chao6.body.setSize(120, 10, 8, 35);
-    chao7.body.setSize(120, 10, 8, 35);
-    chao8.body.setSize(120, 10, 8, 35);
-    chao9.body.setSize(120, 10, 8, 35);
-    chao10.body.setSize(120, 10, 8, 35);
+
 }
 
 function portalGen(x,y){

@@ -2,13 +2,13 @@
 
 
  function platforms1Gen() {
-      
-     chao1.x = 260;
-     chao1.y = 323;
-     chao2.x = 30;
-     chao2.y = 320;
-     chao3.x = 450;
-     chao3.y = 340;
+
+    chao1.x = 260;
+    chao1.y = 323;
+    chao2.x = 30;
+    chao2.y = 320;
+    chao3.x = 450;
+    chao3.y = 340;
 
      //move as plataformas para cima e para baixo, usando um contador que reveza entre up e down
      var loopPlatforms = game.time.events.loop(Phaser.Timer.SECOND * 1, movePlatforms1, this);

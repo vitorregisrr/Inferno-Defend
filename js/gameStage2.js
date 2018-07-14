@@ -25,12 +25,14 @@ function criarState2() {
     setMage2();
     addControls();
     lavaCreate();
+
+    mageHpBar = game.add.sprite(20,20,'hpBar');
 }
 
 function atualizarState2() {
     mageMove();
     bulletsCollide();
-    mageDead();
+    mageHpBarChange();
     monstro1Moviment();
     
 

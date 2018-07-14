@@ -1,8 +1,7 @@
 
-var mageHp;
+var mageHp,magHpBar;
 function personagemGen() {
     mage = game.add.sprite(0, 0, 'mage');
-    mageHp = 5;
     /*MAGE FISICA */
     game.physics.arcade.enable(mage);
     mage.body.bounce.y = 0.2; //salto
@@ -15,13 +14,25 @@ function personagemGen() {
 
 }
 
-function mageDead(){
-    //mata o mago se encostar na lava
-    game.physics.arcade.overlap(mage, lavaGroup, gameOver, null, this);
+function mageHpBarChange(){
+    if(mageHp == 1){
+        mageHpBar.animations.frame = 4;
+    }
 
-    //mata o mago se cair
-    if (mage.body.blocked.down) {
-        gameOver();
+    if(mageHp == 2){
+        mageHpBar.animations.frame = 3;
+    }
+
+    if(mageHp == 3){
+        mageHpBar.animations.frame = 2;
+    }
+
+    if(mageHp == 4){
+        mageHpBar.animations.frame = 1;
+    }
+
+    if(mageHp == 5){
+        mageHpBar.animations.frame = 0;
     }
 }
 

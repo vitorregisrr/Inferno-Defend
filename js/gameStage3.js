@@ -22,14 +22,17 @@ function criarState3() {
     monstro1Gen();
     createAudios();
     setMage3();
+    lavaCreate();
     portalGen(650,70);
+
+    mageHpBar = game.add.sprite(20,20,'hpBar');
 
 }
 
 function atualizarState3() {
     mageMove();
     bulletsCollide();
-    mageDead();
+    mageHpBarChange();
     monstro1Moviment();
 
     /* PERSONAGENS E PLATAFORMAS COLISAO*/
