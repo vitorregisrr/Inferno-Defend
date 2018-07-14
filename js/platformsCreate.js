@@ -1,5 +1,5 @@
 var lava,lavaGroup, portal;
-var plataformas, chao1, chao2, chao3, chao4, chao5, chao6, chao7, chao8, chao9, chao10;
+var plataformas, chao1, chao2, chao3, chao4, chao5, chao6, chao7, chao8, chao9, chao10, chao11;
 var animLava;
 
 function platformsCreate(){
@@ -16,6 +16,7 @@ function platformsCreate(){
     chao8 = plataformas.create(0 - chao5.width,0 - chao5.height, 'chao1');
     chao9 = plataformas.create(0 - chao5.width,0 - chao5.height, 'chao1');
     chao10 = plataformas.create(0 - chao5.width,0 - chao5.height, 'chao2');
+    chao11 = plataformas.create(0 - chao5.width,0 - 500, 'chao3');
 
     
     chao1.body.setSize(120, 10, 8, 35);
@@ -28,6 +29,7 @@ function platformsCreate(){
     chao8.body.setSize(120, 10, 8, 35);
     chao9.body.setSize(120, 10, 8, 35);
     chao10.body.setSize(120, 10, 8, 35);
+    chao11.body.setSize(265, 70, 10, 50);
 
     chao1.body.immovable = true;
     chao2.body.immovable = true;
@@ -39,6 +41,8 @@ function platformsCreate(){
     chao8.body.immovable = true;
     chao9.body.immovable = true;
     chao10.body.immovable = true;
+
+    chao11.body.immovable = true;
 
 
 }

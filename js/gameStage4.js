@@ -61,5 +61,5 @@ function atualizarState4() {
 }
 
 function render() {
-    game.debug.body(mage);
+    game.debug.body(chao11);
 }

@@ -28,26 +28,43 @@ function monstro1Moviment(){
 }
 
 function bossGen(){
-        boss = game.add.sprite(30,30, 'boss');
+        boss = game.add.sprite(0 - 300 , 0 - 500 , 'boss');
         bossHp = 50;
          /*BOSS FISICA */
         game.physics.arcade.enable(boss);
-        boss.body.collideWorldBounds = true; //habilita a colisão
         boss.body.immovable = true;
+        boss.body.collideWorldBounds = false; //habilita a colisão
 
         var flyBoss = boss.animations.add('bossFly');
         boss.animations.play('bossFly', 12, true);
         boss.body.setSize(boss.height - 190, boss.width - 160,180,20);
+
+        game.time.events.add(900, function () {
+                game.physics.arcade.moveToXY(boss , 30, 30, 100 ,4000); 
+                game.time.events.add(4000, function () {
+                    boss.body.velocity.y = 0;
+                    boss.body.velocity.x = 0;
+                 }, this);
+        }, this)
+
+      
+
+        //entrada do boss no cenário
         
 }
 
 function bossShoted(dano){
         bossHp -= dano;
         if(bossHp == 0){
-            boss.kill();
             game.time.events.remove(loopBossAttack);
+
+            bossHpBar.frame = 1;
+            //saida do boss do cenário
+            game.physics.arcade.moveToXY(boss, 0 -200 , 0 - 300 ,300, 3000);
+            boss.body.collideWorldBounds = false;
+            setTimeout(function(){ boss.kill(); 
             sounds.bossScream.volume = 0;
-            sounds.bossFlying.volume = 0;
+            sounds.bossFlying.volume = 0;}, 6000);
             comedownPlatforms4();
         }
 

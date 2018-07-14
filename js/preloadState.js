@@ -1,6 +1,7 @@
 var preloadState = { create:criarPreload, preload: precarregarPreload}
 
 function precarregarPreload() {
+
     //caracteres
     game.load.spritesheet('mage', 'assets/caracteres/finn.png', 43, 64);
     game.load.spritesheet('marceline', 'assets/caracteres/marceline.png', 33, 69);
@@ -33,7 +34,7 @@ function precarregarPreload() {
 
     //hpBars
     game.load.spritesheet('hpBar', 'assets/hpBars/hpBar.png', 211, 70, 5);
-    game.load.image('hpBarBoss', 'assets/hpBars/hpBarBoss.png');
+    game.load.spritesheet('hpBarBoss', 'assets/hpBars/hpBarBoss.png', 211, 71, 2);
 
     //inimigos
     game.load.spritesheet('boss', 'assets/monstros/boss.png', 360, 275, 6);

@@ -5,18 +5,13 @@
      chao1.y = 420;
      chao2.x = 30; 
      chao2.y = 440;
-     chao3.x = 430;
-     chao3.y = 420;
-     chao4.x = 630;
-     chao4.y = 360;
-     chao5.x = 290;
+     chao11.y = 320;
+     chao11.x = 430;
      chao5.y = 0 - chao1.width;
      chao6.x = 450;
      chao6.y =  0 - chao1.width;
      chao7.x = 450;
      chao7.y =  0 - chao1.width
-     chao8.x = 630;
-     chao8.y =  0 - chao1.width;
      
       
      var loopPlatforms = game.time.events.loop(Phaser.Timer.SECOND * 1, movePlatforms3, this);
@@ -27,12 +22,14 @@
             chao2.body.velocity.y = -25;
             chao3.body.velocity.y = -18;
             chao4.body.velocity.y = -19;
+            chao11.body.velocity.y = -30;
             cont = 'down';
         } else if (cont == 'down') {
             chao1.body.velocity.y = 20;
             chao2.body.velocity.y = 25;
             chao3.body.velocity.y = 18;
             chao4.body.velocity.y = 19;
+            chao11.body.velocity.y = 30;
             cont = 'up';
         }
     }
