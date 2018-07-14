@@ -4,9 +4,9 @@ function monstro1Gen() {
 
         monstros1 = game.add.group();
         monstros1.enableBody = true;
-        clearInterval(loopMonstro1);
-        loopMonstro1 = window.setInterval(monstro1LoopCreate, monstro1Interval);
+        loopMonstro1 = game.time.events.loop(monstro1Interval, monstro1LoopCreate, this);
 }
+
 
 
 function monstro1LoopCreate() {
