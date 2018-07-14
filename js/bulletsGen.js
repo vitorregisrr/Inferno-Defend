@@ -52,12 +52,15 @@ function bulletsCollide(){
         }, null, this);
     });
 
-    monstros1.forEachAlive(function (monstro1) {
-        game.physics.arcade.collide(mage, bulletsBossGroup, function () {
-            bulletBoss.kill();
-            mageShoted(1);
-        }, null, this);
-    });
+    game.physics.arcade.collide(mage, bulletsBossGroup, function () {
+        var bulletBossTouched = bulletBoss.animations.add('touched',[16,17,18,19,20,21,22,23,24,25,26,27,28,29]);
+        bulletBoss.animations.stop();
+        bulletBoss.animations.play('touched', 40, true);
+        bulletBoss.kill();
+
+
+        mageShoted(1);
+    }, null, this);
 
       //colisao entre bullets e plataformas
        bulletsKnife.forEachAlive(function (bulletKnife) {
@@ -69,6 +72,8 @@ function bulletsCollide(){
     
 
 }
+
+var bulletBossTouchedAnim;
 
 function bossAtack(){
 
