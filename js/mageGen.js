@@ -53,7 +53,7 @@ function setMage1(){
 
 function setMage2(){
     mage.x = 80;
-    mage.y = 430;
+    mage.y = 400;
 }
 
 function setMage3(){

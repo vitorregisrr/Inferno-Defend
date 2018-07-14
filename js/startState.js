@@ -1,46 +1,4 @@
-var startState = { create:criarStart, preload: precarregarGame}
-
-function precarregarGame() {
-    //caracteres
-    game.load.spritesheet('mage', 'assets/caracteres/finn.png', 43, 64);
-    game.load.spritesheet('marceline', 'assets/caracteres/marceline.png', 33, 69);
-
-    //UI elements
-     game.load.image('logo', 'assets/ui/logo.png');
-
-    //portais
-    game.load.spritesheet('portal', 'assets/portais/portal.png', 60, 109, 9);
-
-    //plataformas
-    game.load.image('chao1', 'assets/plataformas/chao1.png');
-    game.load.image('chao2', 'assets/plataformas/chao2.png');
-    game.load.image('chao3', 'assets/plataformas/chao3.png');
-    game.load.spritesheet('lava', 'assets/plataformas/lava.png', 296, 79, 4);
-
-    //sounds
-    game.load.audio('knife', ['assets/audio/knife.ogg']);
-    game.load.audio('lava', ['assets/audio/lava.ogg']);
-    game.load.audio('bossFlying', ['assets/audio/bossFlying.ogg']);
-    game.load.audio('bossAtack', ['assets/audio/bossAtack.ogg']);
-    game.load.audio('atacked', ['assets/audio/atacked.ogg']);
-    game.load.audio('sfx', 'assets/audio/fx_mixdown.ogg');
-
-    //bullets
-    game.load.spritesheet('bossBullet', 'assets/bullets/bossBullet.png', 60, 53, 30);
-    game.load.image('bullet', 'assets/bullets/knife.png');
-
-    //hpBars
-    game.load.spritesheet('hpBar', 'assets/hpBars/hpBar.png', 211, 70, 5);
-    game.load.image('hpBarBoss', 'assets/hpBars/hpBarBoss.png');
-
-    //inimigos
-    game.load.spritesheet('boss', 'assets/monstros/boss.png', 360, 275, 6);
-    game.load.spritesheet('monstro1', 'assets/monstros/monstro1.png', 48, 45);
-
-    //backgrounds
-    game.load.spritesheet('background', 'assets/backgrounds/background.png', 800, 600, 8);
-
-}
+var startState = { create:criarStart}
 
 
 function criarStart()
@@ -57,7 +15,6 @@ function criarStart()
     game.add.sprite(game.world.centerX - 150, game.world.centerY - 200, 'logo');
 
 }
-
 
 function start(){
     game.state.start('gameState1');

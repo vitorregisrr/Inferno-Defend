@@ -3,7 +3,7 @@
  function platforms2Gen() {
 
     chao1.x = 30; 
-    chao1.y = 490;
+    chao1.y = 430;
     chao2.x = 200;
     chao2.y = 390;
     chao3.x = 390; 
