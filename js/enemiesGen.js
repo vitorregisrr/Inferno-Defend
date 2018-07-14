@@ -46,6 +46,8 @@ function bossShoted(dano){
         if(bossHp == 0){
             boss.kill();
             game.time.events.remove(loopBossAttack);
+            sounds.bossScream.volume = 0;
+            sounds.bossFlying.volume = 0;
             comedownPlatforms4();
         }
 
