@@ -72,9 +72,6 @@ function bulletsCollide(){
     
 
 }
-
-var bulletBossTouchedAnim;
-
 function bossAtack(){
 
     bulletsBossGroup = game.add.group();

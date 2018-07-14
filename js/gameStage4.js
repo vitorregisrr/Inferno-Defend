@@ -61,5 +61,4 @@ function atualizarState4() {
 }
 
 function render() {
-    game.debug.body(chao11);
 }

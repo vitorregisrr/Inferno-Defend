@@ -7,11 +7,9 @@
      chao2.y = 440;
      chao11.y = 320;
      chao11.x = 430;
+     chao5.x = 500;
      chao5.y = 0 - chao1.width;
-     chao6.x = 450;
-     chao6.y =  0 - chao1.width;
-     chao7.x = 450;
-     chao7.y =  0 - chao1.width
+     chao6.x = 320;
      
       
      var loopPlatforms = game.time.events.loop(Phaser.Timer.SECOND * 1, movePlatforms3, this);
@@ -38,9 +36,8 @@
 }
 
 function comedownPlatforms4(){
-    game.physics.arcade.moveToXY(chao5, chao5.x, 200, 100 ,3000); 
-    game.physics.arcade.moveToXY(chao6, chao6.x, 100, 200 ,3000);
-    game.physics.arcade.moveToXY(chao7, chao7.x, 280, 50 ,3000); 
+    game.physics.arcade.moveToXY(chao5, chao5.x, 130, 100 ,3000); 
+    game.physics.arcade.moveToXY(chao6, chao6.x, 210, 200 ,3000);
 
     game.time.events.add(3000, function () {
         chao5.body.velocity.y = 0;
