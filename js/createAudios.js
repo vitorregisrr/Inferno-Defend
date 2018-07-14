@@ -17,12 +17,15 @@ function createAudios() {
 
 	sounds.lava = game.add.audio('lava');
 	sounds.bossAtack = game.add.audio('bossAtack');
+	sounds.bossScream = game.add.audio('bossScream');
 	sounds.bossFlying= game.add.audio('bossFlying');
 	sounds.atacked = game.add.audio('atacked');
 	sounds.knife = game.add.audio('knife');
+	sounds.enterPortal = game.add.audio('enterPortal');
 
 	sounds.bossFlying.volume = 0.1;
 	sounds.lava.volume = 0.1;
 	sounds.bossAtack.volume = 0.1;
+	sounds.bossScream.volume = 0.2;
 
 }

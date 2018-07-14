@@ -36,7 +36,11 @@ function criarState4() {
     mageHpBar = game.add.sprite(20,20,'hpBar');
 
     sounds.lava.play();
+    sounds.bossFlying.play();
+    sounds.bossScream.play();
     var lavaSoundLoop = game.time.events.loop(Phaser.Timer.SECOND * 2, function(){sounds.lava.play()}, this);
+    var bossFlyingSoundLoop = game.time.events.loop(Phaser.Timer.SECOND * 0.8, function(){sounds.bossFlying.play();}, this);
+    var bossScreamSoundLoop = game.time.events.loop(Phaser.Timer.SECOND * 10, function(){sounds.bossScream.play();}, this);
 
 }
 

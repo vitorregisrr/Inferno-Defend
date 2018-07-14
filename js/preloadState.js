@@ -22,8 +22,10 @@ function precarregarPreload() {
     game.load.audio('lava', ['assets/audio/lava.ogg']);
     game.load.audio('bossFlying', ['assets/audio/bossFlying.ogg']);
     game.load.audio('bossAtack', ['assets/audio/bossAtack.ogg']);
+    game.load.audio('bossScream', 'assets/audio/bossScream.ogg');
     game.load.audio('atacked', ['assets/audio/atacked.ogg']);
     game.load.audio('sfx', 'assets/audio/fx_mixdown.ogg');
+    game.load.audio('enterPortal', 'assets/audio/enterPortal.ogg');
 
     //bullets
     game.load.spritesheet('bossBullet', 'assets/bullets/bossBullet.png', 60, 53, 30);
