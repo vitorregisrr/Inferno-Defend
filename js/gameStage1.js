@@ -3,39 +3,37 @@ var gameState1 = {
     update: atualizarState1,
 };
 
-
 function criarState1() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
     cursors = game.input.keyboard.createCursorKeys();
 
     background = game.add.sprite(0, 0, 'background');
     anim = background.animations.add('lava');
-    anim.play(10, true);
+    anim.play(8, true);
 
-    /*controles WASD */
-    upButton = game.input.keyboard.addKey(Phaser.Keyboard.W);
-    downButton = game.input.keyboard.addKey(Phaser.Keyboard.S);
-    leftButton = game.input.keyboard.addKey(Phaser.Keyboard.A);
-    rightButton = game.input.keyboard.addKey(Phaser.Keyboard.D);
-
+    portalGen(670,250);
+    platformsCreate();
+    addControls();
     platforms1Gen();
     personagemGen();
     bulletsGen();
     monstro1Gen();
     createAudios();
+    setMage1();
+    lavaCreate();
+    
 
 }
 
 function atualizarState1() {
     mageMove();
     bulletsCollide();
-    dificultyIncrement();
     mageDead();
     monstro1Moviment();
 
     /* PERSONAGENS E PLATAFORMAS COLISAO*/
     game.physics.arcade.collide(mage, plataformas);
-    game.physics.arcade.collide(portal1, plataformas);
-    game.physics.arcade.collide(portal1, mage);
+    game.physics.arcade.collide(portal, plataformas);
+    game.physics.arcade.overlap(portal, mage, setDificulty2, null, this);
 
 }

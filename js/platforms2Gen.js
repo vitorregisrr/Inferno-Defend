@@ -1,31 +1,55 @@
  /* Plataformas */
- var chao1, chao2, chao3, chao4, portal2;
 
  function platforms2Gen() {
-     plataformas = game.add.group();
-     plataformas.enableBody = true;
 
-     chao1 = plataformas.create(230, 500 - 123, 'chao1');
-     chao2 = plataformas.create(30, 230 - 120, 'chao2');
-     chao3 = plataformas.create(410, game.world.height - 140, 'chao2');
-     chao4 = plataformas.create(630, game.world.height - 130, 'chao1');
-     chao1.body.immovable = true;
-     chao2.body.immovable = true;
-     chao3.body.immovable = true;
-     chao4.body.immovable = true;
+    chao1.x = 30; 
+    chao1.y = 490;
+    chao2.x = 200;
+    chao2.y = 390;
+    chao3.x = 390; 
+    chao3.y = 0 - chao3.width;
+    chao4.x = 540; 
+    chao4.y = 0 - chao3.width;
 
-     chao1.body.setSize(90, 30, 30, 35);
-     chao2.body.setSize(90, 30, 30, 35);
-     chao3.body.setSize(90, 30, 30, 35);
-     chao4.body.setSize(90, 30, 30, 35);
+    chao5.x = 230; 
+    chao5.y = 200;
+    chao6.x = 30; 
+    chao6.y = 270;
+    comedownPlatforms2();
 
-     portal2 = game.add.sprite(60, 300, 'portal');
-     game.physics.arcade.enable(portal2);
-     portal2.body.immovable = true;
-     portal2.body.setSize(30, 30, 30, 35);
-     portal2.body.gravity.y = 300; //gravidade
-     portal2.body.collideWorldBounds = true; //habilita a colisão
+     //move as plataformas para cima e para baixo, usando um contador que reveza entre up e down
+     var loopPlatforms = game.time.events.loop(Phaser.Timer.SECOND * 1, movePlatforms2, this);
+     var cont = 'up';
+
+     function movePlatforms2() {
+         if (cont == 'up') {
+             chao2.body.velocity.y = -20;
+             chao3.body.velocity.y = -20;
+             chao4.body.velocity.y = -20;
+             chao5.body.velocity.y = -20;
+             chao6.body.velocity.y = -20;
+
+             cont = 'down';
+         } else if (cont == 'down') {
+             chao2.body.velocity.y = 20;
+             chao3.body.velocity.y = 20;
+             chao4.body.velocity.y = 20;
+             chao5.body.velocity.y = 20;
+             chao6.body.velocity.y = 20;
+             cont = 'up';
+         }
+     }
 
 
  }
+
+ function comedownPlatforms2(){
+    game.physics.arcade.moveToXY(chao3, chao3.x, 1100, 100 ,3000)
+    game.physics.arcade.moveToXY(chao4, chao4.x, 800, 100 ,3000) 
+
+    game.time.events.add(3000, function () {
+        chao3.body.velocity.y = 0;
+        chao4.body.velocity.y = 0;
+     }, this);
+}
  /* //PLATAFORMAS */

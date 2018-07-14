@@ -1,4 +1,5 @@
 var fx;
+var sounds = {};
 
 function createAudios() {
 	fx = game.add.audio('sfx');
@@ -13,4 +14,15 @@ function createAudios() {
 	fx.addMarker('death', 12, 4.2);
 	fx.addMarker('shot', 17, 1.0);
 	fx.addMarker('squit', 19, 0.3);
+
+	sounds.lava = game.add.audio('lava');
+	sounds.bossAtack = game.add.audio('bossAtack');
+	sounds.bossFlying= game.add.audio('bossFlying');
+	sounds.atacked = game.add.audio('atacked');
+	sounds.knife = game.add.audio('knife');
+
+	sounds.bossFlying.volume = 0.1;
+	sounds.lava.volume = 0.1;
+	sounds.bossAtack.volume = 0.1;
+
 }

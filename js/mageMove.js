@@ -1,10 +1,12 @@
 var mage;
 
-/*controles WASD */
-var upButton;
-var downButton;
-var leftButton;
-var rightButton;
+function addControls(){
+    /*controles WASD */
+    upButton = game.input.keyboard.addKey(Phaser.Keyboard.W);
+    downButton = game.input.keyboard.addKey(Phaser.Keyboard.S);
+    leftButton = game.input.keyboard.addKey(Phaser.Keyboard.A);
+    rightButton = game.input.keyboard.addKey(Phaser.Keyboard.D);
+}
 
 function mageMove() {
     /* Movimentacao mage */
@@ -22,12 +24,12 @@ function mageMove() {
     } else {
 
         mage.animations.stop();
-        mage.frame = 4;
+        mage.frame = 0;
     }
 
     if ((cursors.up.isDown || upButton.isDown) && game.physics.arcade.collide(mage, plataformas)) {
 
-        mage.body.velocity.y = -200;
+        mage.body.velocity.y = -230;
 
     } else if (cursors.down.isDown || downButton.isDown) {
 

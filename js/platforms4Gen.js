@@ -1,31 +1,54 @@
  /* Plataformas */
- var chao1, chao2, chao3, chao4, portal4;
-
  function platforms4Gen() {
-     plataformas = game.add.group();
-     plataformas.enableBody = true;
-
-     chao1 = plataformas.create(230, game.world.height - 123, 'chao1');
-     chao2 = plataformas.create(30, game.world.height - 120, 'chao2');
-     chao3 = plataformas.create(410, game.world.height - 140, 'chao2');
-     chao4 = plataformas.create(630, game.world.height - 130, 'chao1');
-     chao1.body.immovable = true;
-     chao2.body.immovable = true;
-     chao3.body.immovable = true;
-     chao4.body.immovable = true;
-
-     chao1.body.setSize(90, 30, 30, 35);
-     chao2.body.setSize(90, 30, 30, 35);
-     chao3.body.setSize(90, 30, 30, 35);
-     chao4.body.setSize(90, 30, 30, 35);
-
-     portal4 = game.add.sprite(60, 300, 'portal');
-     game.physics.arcade.enable(portal4);
-     portal4.body.immovable = true;
-     portal4.body.setSize(30, 30, 30, 35);
-     portal4.body.gravity.y = 300; //gravidade
-     portal4.body.collideWorldBounds = true; //habilita a colisão
+      
+     chao1.x = 230;
+     chao1.y = 420;
+     chao2.x = 30; 
+     chao2.y = 440;
+     chao3.x = 430;
+     chao3.y = 420;
+     chao4.x = 630;
+     chao4.y = 360;
+     chao5.x = 290;
+     chao5.y = 0 - chao1.width;
+     chao6.x = 450;
+     chao6.y =  0 - chao1.width;
+     chao7.x = 450;
+     chao7.y =  0 - chao1.width
+     chao8.x = 630;
+     chao8.y =  0 - chao1.width;
      
+      
+     var loopPlatforms = game.time.events.loop(Phaser.Timer.SECOND * 1, movePlatforms3, this);
+     var cont = 'up';
+     function movePlatforms3() {
+        if (cont == 'up') {
+            chao1.body.velocity.y = -20;
+            chao2.body.velocity.y = -25;
+            chao3.body.velocity.y = -18;
+            chao4.body.velocity.y = -19;
+            cont = 'down';
+        } else if (cont == 'down') {
+            chao1.body.velocity.y = 20;
+            chao2.body.velocity.y = 25;
+            chao3.body.velocity.y = 18;
+            chao4.body.velocity.y = 19;
+            cont = 'up';
+        }
+    }
 
- }
+
+}
+
+function comedownPlatforms4(){
+    game.physics.arcade.moveToXY(chao5, chao5.x, 200, 100 ,3000); 
+    game.physics.arcade.moveToXY(chao6, chao6.x, 100, 200 ,3000);
+    game.physics.arcade.moveToXY(chao7, chao7.x, 280, 50 ,3000); 
+
+    game.time.events.add(3000, function () {
+        chao5.body.velocity.y = 0;
+        chao6.body.velocity.y = 0;
+        chao7.body.velocity.y = 0;
+     }, this);
+}
  /* //PLATAFORMAS */
