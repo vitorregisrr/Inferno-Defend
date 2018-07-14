@@ -1,5 +1,5 @@
 
-var mageHp,magHpBar;
+var mageHp,magHpBar,marceline;
 function personagemGen() {
     mage = game.add.sprite(0, 0, 'mage');
     /*MAGE FISICA */
@@ -7,10 +7,11 @@ function personagemGen() {
     mage.body.bounce.y = 0.2; //salto
     mage.body.gravity.y = 300; //gravidade
     mage.body.collideWorldBounds = true; //habilita a colisão
-    mage.body.setSize(23,44,4,4)
+    mage.body.setSize(30,50,8,4)
 
-    mage.animations.add('left', [13, 14, 15, 16, 17, 18], 14, true);
-    mage.animations.add('right', [19, 20, 21, 22, 23, 24], 15, true);
+    mage.animations.add('left', [6, 7, 8], 9, true);
+    mage.animations.add('right', [3, 4, 5], 9, true);
+    mage.animations.add('stoped', [1],13, true);
 
 }
 

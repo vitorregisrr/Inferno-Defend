@@ -27,7 +27,7 @@ function mageMove() {
     } else {
 
         mage.animations.stop();
-        mage.frame = 0;
+        mage.animations.play('stoped');
     }
 
     if ((cursors.up.isDown || upButton.isDown) && game.physics.arcade.collide(mage, plataformas)) {
