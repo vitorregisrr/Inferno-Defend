@@ -50,8 +50,12 @@ function mageHpBarChange() {
 
 function mageShoted(dano) {
     mageHp -= dano;
+    if(mageHp > 1 ){
+        mage.animations.play('hited', 10, false);
+    }
     if (mageHp == 0) {
-        gameOver();
+        mage.animations.play('die', 5, false)
+        game.time.events.add(1500,function(){gameOver()});
     }
     sounds.atacked.play();
 }

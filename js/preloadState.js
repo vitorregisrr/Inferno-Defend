@@ -34,6 +34,7 @@ function precarregarPreload() {
     //bullets
     game.load.spritesheet('bossBullet', 'assets/bullets/bossBullet.png', 60, 53, 30);
     game.load.image('bullet', 'assets/bullets/knife.png');
+    game.load.spritesheet('blueBullet', 'assets/bullets/blueBullet.png', 40, 40, 30);
 
     //hpBars
     game.load.spritesheet('hpBar', 'assets/hpBars/hpBar.png', 211, 70, 5);

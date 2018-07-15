@@ -14,6 +14,7 @@ function mageMove() {
 
     /* Movimentacao mage */
     mage.body.velocity.x = 0;
+    if(mageHp > 0 ){
     if (cursors.left.isDown || leftButton.isDown) {
         mage.scale.setTo(-1, 1);
         mage.body.velocity.x = -150;
@@ -49,12 +50,12 @@ function mageMove() {
         })
 
     } else {
-        mage.animations.play('stop');
     }
 
     if(game.physics.arcade.collide(mage, plataformas)){
         mage.body.gravity.y = 1500; //gravidade
     }else{
         mage.body.gravity.y = 300; //gravidade
+    }
     }
 }

@@ -7,7 +7,7 @@ function bulletsGen() {
     bulletsKnife = game.add.group();
     bulletsKnife.enableBody = true;
 
-    bulletsKnife.createMultiple(50, 'bullet');
+    bulletsKnife.createMultiple(50, 'blueBullet');
     bulletsKnife.setAll('checkWorldBounds', true);
     bulletsKnife.setAll('outOfBoundsKill', true);
     game.physics.enable(bulletsKnife, Phaser.Physics.ARCADE);
@@ -21,6 +21,8 @@ function fire() {
         mage.animations.play('atack',10);
         nextFire = game.time.now + fireRate;
         bulletKnife = bulletsKnife.getFirstDead();
+        var animBullet = bulletKnife.animations.add('animLava',[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,19,20,21,23,24,25,26,27,28,29,30]);
+        animBullet.play(18, true);
         sounds.knife.play();
         bulletKnife.reset(mage.x + 5, mage.y + 12);
         bulletKnife.rotation = Math.atan2(game.input.mousePointer.y - bulletKnife.y, game.input.mousePointer.x - bulletKnife.x);
