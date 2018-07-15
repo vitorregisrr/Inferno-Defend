@@ -9,21 +9,35 @@ function criarGameOver()
     anim = background.animations.add('lava');
     anim.play(10, true);
 
-    var textogameOver = game.add.text(350, 250, "JOGAR NOVAMENTE", {
-        fill: 'white'
-    });
-    var texto2 = game.add.text(350, 350, "SCORE: "+score+ " MONSTROS MORTOS", {
-        fill: 'white'
-    });
-    textogameOver.inputEnabled = true;
-    textogameOver.events.onInputDown.add(replay, this);
+    var levelFailed = game.add.sprite(game.world.centerX, game.world.centerY, 'levelFailed');
+    levelFailed.enableBody = true;
+    levelFailed.anchor.x = 0.5;
+    levelFailed.anchor.y = 0.5;
+
+    var btnPlayAgain = game.add.sprite(460, 535, 'btnRestart')
+    btnPlayAgain.enableBody = true;
+    btnPlayAgain.anchor.x = 0.5;
+    btnPlayAgain.anchor.y = 0.5;
+    btnPlayAgain.inputEnabled = true;
+    btnPlayAgain.events.onInputDown.add(replay, this);
+
+    var btnBackMenu = game.add.sprite(340, 535, 'btnLeft')
+    btnBackMenu.enableBody = true;
+    btnBackMenu.anchor.x = 0.5;
+    btnBackMenu.anchor.y = 0.5;
+
+    btnPlayAgain.inputEnabled = true;
+    btnPlayAgain.events.onInputDown.add(replay, this);
+    
+    var texto2 =  game.add.text(310, 250,"Monstros mortos: "+score, {
+        font: "23px Palatino",
+        fill: "#d4c69a"});
 
 }
 
 function replay() {
     gameOverStatus = false;
-    game.state.start('startState');
-    score = 0;
+    game.state.start('gameState1');
 }
 
 function gameOver() {

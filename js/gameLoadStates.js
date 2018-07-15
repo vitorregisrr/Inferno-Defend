@@ -8,9 +8,10 @@ game.state.add('gameState4', gameState4);
 
 
 game.state.add('preloadState', preloadState);
+game.state.add('bootState', bootState);
 game.state.add('startState', startState);
 game.state.add('gameoverState', gameoverState);
 
 
 //define estado inicial
-game.state.start('preloadState');
+game.state.start('bootState');

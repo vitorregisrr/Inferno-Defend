@@ -10,13 +10,13 @@ function monstro1Gen() {
         game.time.events.loop(Phaser.Timer.SECOND * 1, function () {
                 monstros1.forEachAlive(function (monstro1) {
                         if (monstro1.colision) {
-                            monstro1.colision = false;
-                            console.log('deu dano');
-                            mageShoted(1);
+                                monstro1.colision = false;
+                                console.log('deu dano');
+                                mageShoted(1);
                         }
-                    })
-            });
-        
+                })
+        });
+
 }
 //fica criando as mosquinhas
 function monstro1LoopCreate() {
@@ -32,14 +32,14 @@ function monstro1LoopCreate() {
 //faz as mosquinhas seguirem o personagem
 function monstro1Moviment() {
 
-         //teste de colisao para a função de dano do monstro1
-         monstros1.forEachAlive(function (monstro1) {
+        //teste de colisao para a função de dano do monstro1
+        monstros1.forEachAlive(function (monstro1) {
                 //colisao entre asmago e monstros1
                 game.physics.arcade.collide(monstro1, mage, function () {
                         monstro1.colision = true;
                 }, null, this);
         });
-        
+
         monstros1.forEachAlive(function (monstro1) {
                 game.physics.arcade.moveToObject(monstro1, mage, monstro1Speed);
 
@@ -73,7 +73,7 @@ function bossGen() {
                 }, this);
         }, this)
 
-        
+
         //entrada do boss no cenário
 
 }
@@ -103,27 +103,23 @@ function bossHited(dano) {
 
 
 //criação das gargolas do cenário 3
-var gargolas, gargola1, gargola2, gargola3 ,gargola1HpBar, gargola2HpBar, gargola3HpBar, gargola1HpBarText, gargola2HpBarText, gargola3HpBarText;
-var gargolasMortas = 0;
+var gargolas, gargola1, gargola2, gargola3, gargola1HpBar, gargola2HpBar, gargola3HpBar, gargola1HpBarText, gargola2HpBarText, gargola3HpBarText;
 var gargolasHp = {}
+var gargolasMortas = 0;
 
 function gargolas2Gen() {
         gargolas = game.add.group();
-        gargolasHp = {
-                gargola1: 10,
-                gargola2: 10,
-                gargola3:10,
-        }
+        gargolasMortas = 0;
 
         gargolas.colision = false;
 
-          //lógica do dano  ao encostar por segundo
-          game.time.events.loop(Phaser.Timer.SECOND * 1, function () {
+        //lógica do dano  ao encostar por segundo
+        game.time.events.loop(Phaser.Timer.SECOND * 1, function () {
                 if (gargolas.colision) {
                         gargolas.colision = false;
                         mageShoted(1);
-                }  
-            });
+                }
+        });
 
 
         /*GARGOLAS FISICA */
@@ -133,14 +129,17 @@ function gargolas2Gen() {
         gargolas.setAll('body.immovable', true);
         //criar as gargolas
         gargola1 = gargolas.create(1200, 600, 'gargola');
+        gargola1.hp = 1;
         gargola1.body.setSize(80, 60, -10, 20);
         gargola1.body.immovable = true;
 
         gargola2 = gargolas.create(1200, 400, 'gargola');
+        gargola2.hp = 1;
         gargola2.body.setSize(80, 60, -10, 20);
         gargola2.body.immovable = true;
 
         gargola3 = gargolas.create(1200, 300, 'gargola');
+        gargola3.hp = 3;
         gargola3.body.setSize(80, 60, -10, 20);
         gargola3.body.immovable = true;
 
@@ -153,6 +152,27 @@ function gargolas2Gen() {
 
         gargola3.anchor.setTo(.5, .5);
         gargola3.scale.x *= -1;
+
+        //barras de hp
+        gargola1.HpBar = game.add.sprite(620, 30, 'hpBarGargola');
+        gargola1.HpBarText = game.add.text(660, 55, "15 / 15", {
+                font: "8px Arial",
+                fill: "#ffff"
+        });
+
+        gargola2.HpBar = game.add.sprite(620, 90, 'hpBarGargola');
+        gargola2.HpBarText = game.add.text(660, 115, "15/ 15", {
+                font: "8px Arial",
+                fill: "#ffff"
+        });
+
+        gargola3.HpBar = game.add.sprite(620, 150, 'hpBarGargola');
+        gargola3.HpBarText = game.add.text(660, 175, "15 / 15", {
+                font: "8px Arial",
+                fill: "#ffff"
+        });
+
+
 
         //animacoes
         var flyGargola1 = gargola1.animations.add('gargola1Fly');
@@ -200,31 +220,128 @@ function gargolasHited(gargola, dano) {
 
         switch (gargola) {
                 case 1:
-                        gargolasHp.gargola1 -= dano;
-                        if (gargolasHp.gargola1 == 0) {
-                                gargola1.kill();
-                                gargola1HpBar.frame = 1;
-                                gargolasMortas ++;
+                        gargola1.hp -= dano;
+                        if (gargola1.hp == 0) {
+                                gargola1.HpBar.frame = 1;
+                                setTimeout(function () {
+                                        game.time.events.remove(gargola1.ChaseLoop);
+                                        gargola1.kill();
+                                        gargolasMortas++;
+                                        gargola1.HpBar.kill();
+                                        gargola1.HpBarText.destroy();
+                                }, 000);
                         }
                         break;
 
                 case 2:
-                        gargolasHp.gargola2 -= dano;
-                        if (gargolasHp.gargola2 == 0) {
-                                gargola2.kill();
-                                gargola2HpBar.frame = 1;
-                                gargolasMortas ++;
+                        gargola2.hp -= dano;
+                        if (gargola2.hp == 0) {
+                                gargola2.HpBar.frame = 1;
+                                setTimeout(function () {
+                                        game.time.events.remove(gargola2.ChaseLoop);
+                                        gargola2.kill();
+                                        gargolasMortas++;
+                                        gargola2.HpBar.kill();
+                                        gargola2.HpBarText.destroy();
+                                }, 00);
                         }
                         break;
 
                 case 3:
 
-                        gargolasHp.gargola3 -= dano;
-                        if (gargolasHp.gargola3 == 0) {
-                                gargola3.kill();
-                                gargola3HpBar.frame = 1;
-                                gargolasMortas ++;
+                        gargola3.hp -= dano;
+                        if (gargola3.hp == 0) {
+                                gargola3.HpBar.frame = 1;
+                                game.time.events.remove(gargola3.ChaseLoop);
+                                setTimeout(function () {
+                                        gargola3.kill();
+                                        gargolasMortas++;
+                                        gargola3.HpBar.kill();
+                                        gargola3.HpBarText.destroy();
+                                }, 000);
+
                         }
                         break;
+        }
+
+}
+
+//ataque das gargolas
+function gargolaAttack() {
+
+        gargola1.ChaseLoop = game.time.events.loop(Phaser.Timer.SECOND * 8, gargolaChase, this, 1);
+        gargola2.ChaseLoop =  game.time.events.loop(Phaser.Timer.SECOND * 5, gargolaChase, this, 2);
+        gargola3.ChaseLoop = game.time.events.loop(Phaser.Timer.SECOND * 10, gargolaChase, this, 3);
+
+        function gargolaChase(n) {
+
+                switch (n) {
+                        case 1:
+                                if (gargola1.hp > 0) {
+                                        sounds.monsterChase.play();
+                                        game.physics.arcade.moveToXY(gargola1, mage.x, mage.y, 100, 1700);
+
+                                        game.time.events.add(1700, function () {
+                                                gargola1.body.velocity.x = 0;
+                                                gargola1.body.velocity.y = 0;
+                                        }, this);
+
+                                        game.time.events.add(1700, function () {
+                                                game.physics.arcade.moveToXY(gargola1, 600, 150, 100, 2000);
+
+                                                game.time.events.add(2000, function () {
+                                                        gargola1.body.velocity.x = 0;
+                                                        gargola1.body.velocity.y = 0;
+                                                }, this);
+                                        }, this)
+                                }
+
+                                break;
+
+                        case 2:
+                                if (gargola2.hp > 0) {
+                                        sounds.monsterChase.play();
+                                        game.physics.arcade.moveToXY(gargola2, mage.x, mage.y, 100, 1700);
+
+                                        game.time.events.add(1700, function () {
+                                                gargola2.body.velocity.x = 0;
+                                                gargola2.body.velocity.y = 0;
+                                        }, this);
+
+                                        game.time.events.add(1700, function () {
+                                                game.physics.arcade.moveToXY(gargola2, 500, 250, 100, 2000);
+
+                                                game.time.events.add(2000, function () {
+                                                        gargola2.body.velocity.x = 0;
+                                                        gargola2.body.velocity.y = 0;
+                                                }, this);
+                                        }, this)
+                                }
+                                break;
+
+                        case 3:
+                                if (gargola3.hp > 0) {
+                                        sounds.monsterChase.play();
+                                        game.physics.arcade.moveToXY(gargola3, mage.x, mage.y, 100, 1300);
+
+                                        game.time.events.add(1300, function () {
+                                                gargola3.body.velocity.x = 0;
+                                                gargola3.body.velocity.y = 0;
+                                        }, this);
+
+                                        game.time.events.add(1300, function () {
+                                                game.physics.arcade.moveToXY(gargola3, 600, 450, 100, 2000);
+
+                                                game.time.events.add(2000, function () {
+                                                        gargola3.body.velocity.x = 0;
+                                                        gargola3.body.velocity.y = 0;
+                                                }, this);
+                                        }, this)
+
+                                        break;
+                                }
+
+
+                }
         }
 }

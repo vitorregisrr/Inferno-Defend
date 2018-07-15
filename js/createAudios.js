@@ -24,6 +24,7 @@ function createAudios() {
 	sounds.enterPortal = game.add.audio('enterPortal');
 	sounds.bossScreamPain = game.add.audio('bossScreamPain');
 	sounds.magicAttack = game.add.audio('magicAttack');
+	sounds.monsterChase = game.add.audio('monsterChase');
 
 	sounds.bossFlying.volume = 0.1;
 	sounds.lava.volume = 0.1;
@@ -31,5 +32,6 @@ function createAudios() {
 	sounds.bossScream.volume = 0.2;
 	sounds.magicAttack.volume = 0.7;
 	sounds.bossScreamPain.volume = 0.6;
+	sounds.monsterChase.volume = 0.4;
 
 }

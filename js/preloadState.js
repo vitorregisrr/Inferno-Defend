@@ -2,6 +2,25 @@ var preloadState = { create:criarPreload, preload: precarregarPreload}
 
 function precarregarPreload() {
 
+    background = game.add.sprite(0, 0, 'background2');
+    anim = background.animations.add('lava');
+    anim.play(10, true);
+
+
+    var logo = game.add.sprite(game.world.centerX , game.world.centerY - 120 , 'logo');
+    logo.enableBody = true;
+    logo.anchor.x = 0.5;
+    logo.anchor.y = 0.5;
+
+    var preloadBarBg = game.add.sprite(game.world.centerX, game.world.centerY +60, 'preloadBarBg');
+    preloadBarBg.enableBody = true;
+    preloadBarBg.anchor.x = 0.5;
+    preloadBarBg.anchor.y = 0.5;
+
+
+    preloadBar = game.add.sprite(150, 345, 'preloadBar');
+    this.load.setPreloadSprite(preloadBar);
+    
     //caracteres
     game.load.spritesheet('finn', 'assets/caracteres/finn.png', 43, 64);
     game.load.spritesheet('marceline', 'assets/caracteres/marceline.png', 33, 69);
@@ -9,8 +28,24 @@ function precarregarPreload() {
 
 
     //UI elements
-     game.load.image('logo', 'assets/ui/logo.png');
+    game.load.image('logo', 'assets/ui/logo.png');
+    game.load.image('btnPlay', 'assets/ui/btnPlay.png');
+    game.load.image('btnSettings', 'assets/ui/btnSettings.png');
+    game.load.image('btnMenu', 'assets/ui/btnMenu.png');
+    game.load.image('btnFacebook', 'assets/ui/btnFacebook.png');
+    game.load.image('btnMusic', 'assets/ui/btnMusic.png');
+    game.load.image('btnSound', 'assets/ui/btnSound.png');
+    game.load.image('btnPlay', 'assets/ui/btnPlay.png');
+    game.load.image('btnSettings', 'assets/ui/btnSettings.png');
+    game.load.image('btnMenu', 'assets/ui/btnMenu.png');
+    game.load.image('btnFacebook', 'assets/ui/btnFacebook.png');
+    game.load.image('btnMusic', 'assets/ui/btnMusic.png');
+    game.load.image('btnSound', 'assets/ui/btnSound.png');
+    game.load.image('levelFailed', 'assets/ui/levelFailed.png');
+    game.load.image('btnRestart', 'assets/ui/btnRestart.png');
+    game.load.image('btnLeft', 'assets/ui/btnLeft.png');
 
+    
     //portais
     game.load.spritesheet('portal', 'assets/portais/portal.png', 60, 109, 9);
 
@@ -31,6 +66,7 @@ function precarregarPreload() {
     game.load.audio('sfx', 'assets/audio/fx_mixdown.ogg');
     game.load.audio('enterPortal', 'assets/audio/enterPortal.ogg');
     game.load.audio('magicAttack', 'assets/audio/magicAttack.ogg');
+    game.load.audio('monsterChase', 'assets/audio/monsterChase.ogg');
 
     //bullets
     game.load.spritesheet('bossBullet', 'assets/bullets/bossBullet.png', 60, 53, 30);
@@ -40,7 +76,7 @@ function precarregarPreload() {
     //hpBars
     game.load.spritesheet('hpBar', 'assets/hpBars/hpBar.png', 211, 70, 5);
     game.load.spritesheet('hpBarBoss', 'assets/hpBars/hpBarBoss.png', 211, 71, 2);
-    game.load.spritesheet('hpBarGargola', 'assets/hpBars/hpBarGargola.png', 170, 56, 2);
+    game.load.spritesheet('hpBarGargola', 'assets/hpBars/hpBarGargola.png', 120, 40, 2);
 
     //inimigos
     game.load.spritesheet('boss', 'assets/monstros/boss.png', 360, 275, 6);

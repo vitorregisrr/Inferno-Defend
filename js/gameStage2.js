@@ -31,24 +31,6 @@ function criarState2() {
     gargolaAttack();
 
     mageHpBar = game.add.sprite(20, 20, 'hpBar');
-    gargola1HpBar = game.add.sprite(620, 30, 'hpBarGargola');
-    gargola1HpBarText = game.add.text(660, 55, "15 / 15", {
-        font: "13px Arial",
-        fill: "#ffff"
-    });
-
-    gargola2HpBar = game.add.sprite(620, 90, 'hpBarGargola');
-    gargola2HpBarText = game.add.text(660, 115, "15/ 15", {
-        font: "13px Arial",
-        fill: "#ffff"
-    });
-
-    gargola3HpBar = game.add.sprite(620, 150, 'hpBarGargola');
-    gargola3HpBarText = game.add.text(660, 175, "15 / 15", {
-        font: "13px Arial",
-        fill: "#ffff"
-    });
-
 
 
     sounds.lava.play();
@@ -65,10 +47,26 @@ function atualizarState2() {
     bulletsCollide();
     mageHpBarChange();
     monstro1Moviment();
+    
+    //hpbars seguindo os monstros
+    gargola1.HpBar.x = gargola1.x - 75;
+    gargola1.HpBar.y = gargola1.y - 50;
+    gargola1.HpBarText.x = gargola1.HpBar.x + 30;
+    gargola1.HpBarText.y = gargola1.HpBar.y + 20;
 
-    gargola1HpBarText.setText(gargolasHp.gargola1 + " / 10");
-    gargola2HpBarText.setText(gargolasHp.gargola2 + " / 10");
-    gargola3HpBarText.setText(gargolasHp.gargola3 + " / 10");
+    gargola2.HpBar.x = gargola2.x - 75;
+    gargola2.HpBar.y = gargola2.y - 50;
+    gargola2.HpBarText.x = gargola2.HpBar.x + 30;
+    gargola2.HpBarText.y = gargola2.HpBar.y + 20;
+
+    gargola3.HpBar.x = gargola3.x - 75;
+    gargola3.HpBar.y = gargola3.y - 50;
+    gargola3.HpBarText.x = gargola3.HpBar.x + 30;
+    gargola3.HpBarText.y = gargola3.HpBar.y + 20;
+
+    gargola1.HpBarText.setText(gargola1.hp + " / 10");
+    gargola2.HpBarText.setText(gargola2.hp + " / 10");
+    gargola3.HpBarText.setText(gargola3.hp + " / 10");
 
     /* PERSONAGENS E PLATAFORMAS COLISAO*/
     game.physics.arcade.collide(mage, plataformas);
