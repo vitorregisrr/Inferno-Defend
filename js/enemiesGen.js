@@ -5,11 +5,25 @@ function monstro1Gen() {
         monstros1 = game.add.group();
         monstros1.enableBody = true;
         loopMonstro1 = game.time.events.loop(monstro1Interval, monstro1LoopCreate, this);
+
+        //lógica do dano por segundo
+        game.time.events.loop(Phaser.Timer.SECOND * 1, function () {
+                monstros1.forEachAlive(function (monstro1) {
+                        if (monstro1.colision) {
+                            monstro1.colision = false;
+                            console.log('deu dano');
+                            mageShoted(1);
+                        }
+                    })
+            });
+        
 }
 //fica criando as mosquinhas
 function monstro1LoopCreate() {
 
         monstro1 = monstros1.create(game.rnd.integerInRange(0, 600), -30, 'monstro1');
+        monstro1.colision = false;
+        monstro1.round = 1;
         var fly = monstro1.animations.add('fly');
         monstro1.animations.play('fly', 15, true);
         monstro1.body.setSize(30, 40, 10, 6);
@@ -18,6 +32,14 @@ function monstro1LoopCreate() {
 //faz as mosquinhas seguirem o personagem
 function monstro1Moviment() {
 
+         //teste de colisao para a função de dano do monstro1
+         monstros1.forEachAlive(function (monstro1) {
+                //colisao entre asmago e monstros1
+                game.physics.arcade.collide(monstro1, mage, function () {
+                        monstro1.colision = true;
+                }, null, this);
+        });
+        
         monstros1.forEachAlive(function (monstro1) {
                 game.physics.arcade.moveToObject(monstro1, mage, monstro1Speed);
 
@@ -51,8 +73,7 @@ function bossGen() {
                 }, this);
         }, this)
 
-
-
+        
         //entrada do boss no cenário
 
 }
@@ -93,6 +114,18 @@ function gargolas2Gen() {
                 gargola2: 10,
                 gargola3:10,
         }
+
+        gargolas.colision = false;
+
+          //lógica do dano  ao encostar por segundo
+          game.time.events.loop(Phaser.Timer.SECOND * 1, function () {
+                if (gargolas.colision) {
+                        gargolas.colision = false;
+                        mageShoted(1);
+                }  
+            });
+
+
         /*GARGOLAS FISICA */
         game.physics.arcade.enable(gargolas);
         gargolas.enableBody = true;
@@ -137,7 +170,7 @@ function gargolas2Gen() {
                         gargola1.body.velocity.y = 0;
                         gargola1.body.velocity.x = 0;
                         gargola1.animations.stop();
-                        gargola1.animations.play('gargola1Fly', 10, true);
+                        gargola1.animations.play('gargola1Fly', 13, true);
                 }, this);
         }, this)
 
@@ -147,7 +180,7 @@ function gargolas2Gen() {
                         gargola2.body.velocity.y = 0;
                         gargola2.body.velocity.x = 0;
                         gargola2.animations.stop();
-                        gargola2.animations.play('gargola2Fly', 10, true);
+                        gargola2.animations.play('gargola2Fly', 13, true);
                 }, this);
         }, this)
 
@@ -157,7 +190,7 @@ function gargolas2Gen() {
                         gargola3.body.velocity.y = 0;
                         gargola3.body.velocity.x = 0;
                         gargola3.animations.stop();
-                        gargola3.animations.play('gargola3Fly', 10, true);
+                        gargola3.animations.play('gargola3Fly', 13, true);
                 }, this);
         }, this)
 

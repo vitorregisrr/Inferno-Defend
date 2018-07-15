@@ -1,6 +1,7 @@
 var fireRate = 600;
 var nextFire = 0;
 var bulletsKnife, bulletKnife;
+var monstros1Colision;
 
 function bulletsGen() {
 
@@ -16,17 +17,19 @@ function bulletsGen() {
 }
 
 function fire() {
+    if(mageHp > 0){
         if (game.time.now > nextFire && bulletsKnife.countDead() > 0) {
-            mage.animations.play('atack',10);
+            mage.animations.play('atack', 10);
             nextFire = game.time.now + fireRate;
             bulletKnife = bulletsKnife.getFirstDead();
-            var animBullet = bulletKnife.animations.add('animLava',[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,19,20,21,23,24,25,26,27,28,29,30]);
+            var animBullet = bulletKnife.animations.add('animLava', [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 23, 24, 25, 26, 27, 28, 29, 30]);
             animBullet.play(13, true);
             sounds.magicAttack.play();
             bulletKnife.reset(mage.x + 5, mage.y + 12);
             bulletKnife.rotation = Math.atan2(game.input.mousePointer.y - bulletKnife.y, game.input.mousePointer.x - bulletKnife.x);
             game.physics.arcade.moveToPointer(bulletKnife, 400);
         }
+    }
 }
 
 
@@ -48,15 +51,10 @@ function bulletsCollide() {
     });
 
     //colisao entre as gargolas e o mago
-    game.physics.arcade.collide(gargolas, mage, function () {}, null, this);
-
-    //colisao entre o mago e o monstro1
-    monstros1.forEachAlive(function (monstro1) {
-        game.physics.arcade.collide(mage, monstro1, function () {
-            monstro1.kill();
-            mageShoted(1);
-        }, null, this);
-    });
+    game.physics.arcade.collide(gargolas, mage, function () {
+        gargolas.colision = true;
+        console.log(gargolas.colision)
+    }, null, this);
 
     //colisao entre mago e as bolas de fogo do boss
     game.physics.arcade.collide(mage, bulletsBossGroup, function () {
@@ -132,26 +130,71 @@ var loopGargola1Attackl, oopGargola12ttack, loopGargola3Attack
 //ataque das gargolas
 function gargolaAttack() {
 
-    game.time.events.loop(Phaser.Timer.SECOND * 7, gargolaChase, this, 1);
-    game.time.events.loop(Phaser.Timer.SECOND * 8, gargolaChase, this, 2);
-    game.time.events.loop(Phaser.Timer.SECOND * 6, gargolaChase, this, 3);
+    game.time.events.loop(Phaser.Timer.SECOND * 8, gargolaChase, this, 1);
+    game.time.events.loop(Phaser.Timer.SECOND * 5, gargolaChase, this, 2);
+    game.time.events.loop(Phaser.Timer.SECOND * 10, gargolaChase, this, 3);
 
     function gargolaChase(n) {
         switch (n) {
             case 1:
+                game.physics.arcade.moveToXY(gargola1, mage.x, mage.y, 100 ,1700); 
+            
+                game.time.events.add(1700, function () {
+                    gargola1.body.velocity.x = 0;
+                    gargola1.body.velocity.y = 0;
+                 }, this);
+
+                 game.time.events.add(1700, function () {
+                    game.physics.arcade.moveToXY(gargola1, 600, 150 , 100 ,2000); 
+            
+                    game.time.events.add(2000, function () {
+                        gargola1.body.velocity.x = 0;
+                        gargola1.body.velocity.y = 0;
+                     }, this);
+                }, this)
 
 
                 break;
 
             case 2:
 
+                game.physics.arcade.moveToXY(gargola2, mage.x, mage.y, 100 ,1700); 
+                
+                game.time.events.add(1700, function () {
+                    gargola2.body.velocity.x = 0;
+                    gargola2.body.velocity.y = 0;
+                }, this);
+
+                game.time.events.add(1700, function () {
+                    game.physics.arcade.moveToXY(gargola2, 500, 250 , 100 ,2000); 
+            
+                    game.time.events.add(2000, function () {
+                        gargola2.body.velocity.x = 0;
+                        gargola2.body.velocity.y = 0;
+                    }, this);
+                }, this)
+                
                 break;
 
-            case 3:
-                //game.physics.arcade.moveToObject(gargola3, mage, 240);
+            case 3: 
+
+                game.physics.arcade.moveToXY(gargola3, mage.x, mage.y, 100 ,1300); 
+                
+                game.time.events.add(1300, function () {
+                    gargola3.body.velocity.x = 0;
+                    gargola3.body.velocity.y = 0;
+                }, this);
+
+                game.time.events.add(1300, function () {
+                    game.physics.arcade.moveToXY(gargola3, 600, 450 , 100 ,2000); 
+            
+                    game.time.events.add(2000, function () {
+                        gargola3.body.velocity.x = 0;
+                        gargola3.body.velocity.y = 0;
+                    }, this);
+                }, this)
 
                 break;
-
         }
 
 

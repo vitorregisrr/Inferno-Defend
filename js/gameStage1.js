@@ -22,7 +22,7 @@ function criarState1() {
     monstro1Gen();
     setMage1();
     lavaCreate();
-
+    
     mageHpBar = game.add.sprite(20, 20, 'hpBar');
 
     sounds.lava.play();

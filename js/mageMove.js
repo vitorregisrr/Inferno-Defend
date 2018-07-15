@@ -50,7 +50,7 @@ function mageMove() {
 
     } else {
     }
-
+    
     if(game.physics.arcade.collide(mage, plataformas)){
         mage.body.gravity.y = 1500; //gravidade
     }else{
