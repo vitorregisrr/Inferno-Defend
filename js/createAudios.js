@@ -23,11 +23,13 @@ function createAudios() {
 	sounds.knife = game.add.audio('knife');
 	sounds.enterPortal = game.add.audio('enterPortal');
 	sounds.bossScreamPain = game.add.audio('bossScreamPain');
+	sounds.magicAttack = game.add.audio('magicAttack');
 
 	sounds.bossFlying.volume = 0.1;
 	sounds.lava.volume = 0.1;
 	sounds.bossAtack.volume = 0.1;
 	sounds.bossScream.volume = 0.2;
+	sounds.magicAttack.volume = 0.7;
 	sounds.bossScreamPain.volume = 0.6;
 
 }

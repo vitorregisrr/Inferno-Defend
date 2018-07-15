@@ -17,7 +17,6 @@ function criarStart()
 }
 
 function start(){
-    game.state.start('gameState1');
-    setDificulty1();
+    game.state.start('gameState2');
     mageHp = 5;
 }

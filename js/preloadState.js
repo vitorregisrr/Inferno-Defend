@@ -30,6 +30,7 @@ function precarregarPreload() {
     game.load.audio('atacked', ['assets/audio/atacked.ogg']);
     game.load.audio('sfx', 'assets/audio/fx_mixdown.ogg');
     game.load.audio('enterPortal', 'assets/audio/enterPortal.ogg');
+    game.load.audio('magicAttack', 'assets/audio/magicAttack.ogg');
 
     //bullets
     game.load.spritesheet('bossBullet', 'assets/bullets/bossBullet.png', 60, 53, 30);

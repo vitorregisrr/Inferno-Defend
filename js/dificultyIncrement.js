@@ -5,7 +5,7 @@ function setDificulty1(){
 
 function setDificulty2(){
         monstro1Speed = 140;
-        monstro1Interval = 2300;
+        monstro1Interval = 3000;
         sounds.enterPortal.play();
         game.state.start('gameState2');
 }

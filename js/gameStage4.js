@@ -15,13 +15,14 @@ function criarState4() {
     anim = background.animations.add('lava');
     anim.play(10, true);
     
+    createAudios();
     addControls();
     platformsCreate();
     platforms4Gen();
+    setDificulty4();
     personagemGen();
     bulletsGen();
     monstro1Gen();
-    createAudios();
     setMage4();
     bossGen();
     bossAtack();
@@ -55,7 +56,6 @@ function atualizarState4() {
     game.physics.arcade.collide(mage, plataformas);
     game.physics.arcade.collide(portal, plataformas);
     game.physics.arcade.overlap(portal, mage,/* wins*/null , null, this);
-
 
 }
 

@@ -89,9 +89,9 @@ var gargolasHp = {}
 function gargolas2Gen() {
         gargolas = game.add.group();
         gargolasHp = {
-                gargola1: 1,
-                gargola2: 1,
-                gargola3:1 ,
+                gargola1: 10,
+                gargola2: 10,
+                gargola3:10,
         }
         /*GARGOLAS FISICA */
         game.physics.arcade.enable(gargolas);

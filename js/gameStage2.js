@@ -15,14 +15,15 @@ function criarState2() {
     anim = background.animations.add('lava');
     anim.play(10, true);
 
+    createAudios();
     portalGen(700,200);
     addControls();
     platformsCreate();
+    setDificulty2();
     platforms2Gen();
     personagemGen();
     bulletsGen();
     monstro1Gen();
-    createAudios();
     setMage2();
     addControls();
     lavaCreate();

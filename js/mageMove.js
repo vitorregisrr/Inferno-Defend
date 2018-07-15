@@ -31,7 +31,6 @@ function mageMove() {
 
     } else {
 
-
     }
 
     if ((cursors.up.isDown || upButton.isDown) && game.physics.arcade.collide(mage, plataformas)) {
