@@ -11,7 +11,7 @@ function criarState1() {
     anim = background.animations.add('lava');
     anim.play(8, true);
 
-    portalGen(670,250);
+    portalGen(670, 250);
     platformsCreate();
     addControls();
     platforms1Gen();
@@ -22,10 +22,12 @@ function criarState1() {
     setMage1();
     lavaCreate();
 
-    mageHpBar = game.add.sprite(20,20,'hpBar');
+    mageHpBar = game.add.sprite(20, 20, 'hpBar');
 
     sounds.lava.play();
-    var lavaSoundLoop = game.time.events.loop(Phaser.Timer.SECOND * 2, function(){sounds.lava.play()}, this);
+    var lavaSoundLoop = game.time.events.loop(Phaser.Timer.SECOND * 2, function () {
+        sounds.lava.play()
+    }, this);
 
 }
 

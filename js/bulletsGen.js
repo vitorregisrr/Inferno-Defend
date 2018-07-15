@@ -18,6 +18,7 @@ function bulletsGen() {
 function fire() {
 
     if (game.time.now > nextFire && bulletsKnife.countDead() > 0) {
+        mage.animations.play('atack',10);
         nextFire = game.time.now + fireRate;
         bulletKnife = bulletsKnife.getFirstDead();
         sounds.knife.play();

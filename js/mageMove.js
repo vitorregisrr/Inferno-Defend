@@ -1,6 +1,6 @@
 var mage;
 
-function addControls(){
+function addControls() {
     /*controles WASD */
     upButton = game.input.keyboard.addKey(Phaser.Keyboard.W);
     downButton = game.input.keyboard.addKey(Phaser.Keyboard.S);
@@ -15,27 +15,46 @@ function mageMove() {
     /* Movimentacao mage */
     mage.body.velocity.x = 0;
     if (cursors.left.isDown || leftButton.isDown) {
-
+        mage.scale.setTo(-1, 1);
         mage.body.velocity.x = -150;
-        mage.animations.play('left');
+        if (game.physics.arcade.collide(mage, plataformas)) {
+            mage.animations.play('walk', 10, false);
+        }
 
     } else if (cursors.right.isDown || rightButton.isDown) {
-
+        mage.scale.setTo(1, 1);
         mage.body.velocity.x = 150;
-        mage.animations.play('right');
+        if (game.physics.arcade.collide(mage, plataformas)) {
+            mage.animations.play('walk', 10, false);
+        }
 
     } else {
 
-        mage.animations.stop();
-        mage.animations.play('stoped');
+
     }
 
     if ((cursors.up.isDown || upButton.isDown) && game.physics.arcade.collide(mage, plataformas)) {
 
-        mage.body.velocity.y = -230;
+        mage.body.velocity.y = -280;
+        mage.animations.play('up', 10, false)
 
     } else if (cursors.down.isDown || downButton.isDown) {
 
         mage.body.velocity.y = 450;
+    }
+
+    if (!game.physics.arcade.collide(mage, plataformas)) {
+        setTimeout(400, function () {
+            mage.frame = 18;
+        })
+
+    } else {
+        mage.animations.play('stop');
+    }
+
+    if(game.physics.arcade.collide(mage, plataformas)){
+        mage.body.gravity.y = 1500; //gravidade
+    }else{
+        mage.body.gravity.y = 300; //gravidade
     }
 }

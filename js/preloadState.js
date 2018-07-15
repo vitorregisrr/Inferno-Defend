@@ -3,8 +3,10 @@ var preloadState = { create:criarPreload, preload: precarregarPreload}
 function precarregarPreload() {
 
     //caracteres
-    game.load.spritesheet('mage', 'assets/caracteres/finn.png', 43, 64);
+    game.load.spritesheet('finn', 'assets/caracteres/finn.png', 43, 64);
     game.load.spritesheet('marceline', 'assets/caracteres/marceline.png', 33, 69);
+    game.load.spritesheet('mage', 'assets/caracteres/mage.png', 140, 103);
+
 
     //UI elements
      game.load.image('logo', 'assets/ui/logo.png');
