@@ -15,7 +15,6 @@
     chao5.y = 200;
     chao6.x = 30; 
     chao6.y = 270;
-    comedownPlatforms2();
 
      //move as plataformas para cima e para baixo, usando um contador que reveza entre up e down
      var loopPlatforms = game.time.events.loop(Phaser.Timer.SECOND * 1, movePlatforms2, this);
@@ -40,12 +39,11 @@
          }
      }
 
-
  }
 
  function comedownPlatforms2(){
-    game.physics.arcade.moveToXY(chao3, chao3.x, 1100, 100 ,3000)
-    game.physics.arcade.moveToXY(chao4, chao4.x, 800, 100 ,3000) 
+    game.physics.arcade.moveToXY(chao3, chao3.x, 670, 100 ,3000)
+    game.physics.arcade.moveToXY(chao4, chao4.x, 560, 100 ,3000) 
 
     game.time.events.add(3000, function () {
         chao3.body.velocity.y = 0;

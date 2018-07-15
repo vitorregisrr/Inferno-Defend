@@ -32,9 +32,8 @@ function criarState4() {
     bossHpBarText = game.add.text(game.world.width - 190, 50,"50 / 50", {
         font: "17px Arial",
         fill: "#ffff"});
-
     mageHpBar = game.add.sprite(20,20,'hpBar');
-
+    
     sounds.lava.play();
     sounds.bossFlying.play();
     sounds.bossScream.play();

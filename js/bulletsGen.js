@@ -1,6 +1,7 @@
 var fireRate = 400;
 var nextFire = 0;
 var bulletsKnife, bulletKnife;
+
 function bulletsGen() {
 
     bulletsKnife = game.add.group();
@@ -28,9 +29,9 @@ function fire() {
 }
 
 
-function bulletsCollide(){
+function bulletsCollide() {
 
-      /*chama a funcao shot ao clicar */
+    /*chama a funcao shot ao clicar */
     if (game.input.activePointer.isDown) {
         fire();
     }
@@ -45,6 +46,10 @@ function bulletsCollide(){
         }, null, this);
     });
 
+    //colisao entre as gargolas e o mago
+    game.physics.arcade.collide(gargolas, mage, function () {}, null, this);
+
+    //colisao entre o mago e o monstro1
     monstros1.forEachAlive(function (monstro1) {
         game.physics.arcade.collide(mage, monstro1, function () {
             monstro1.kill();
@@ -52,27 +57,53 @@ function bulletsCollide(){
         }, null, this);
     });
 
+    //colisao entre mago e as bolas de fogo do boss
     game.physics.arcade.collide(mage, bulletsBossGroup, function () {
-        var bulletBossTouched = bulletBoss.animations.add('touched',[16,17,18,19,20,21,22,23,24,25,26,27,28,29]);
+        var bulletBossTouched = bulletBoss.animations.add('touched', [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]);
         bulletBoss.animations.stop();
         bulletBoss.animations.play('touched', 40, true);
         bulletBoss.kill();
-
-
         mageShoted(1);
     }, null, this);
 
-      //colisao entre bullets e plataformas
-       bulletsKnife.forEachAlive(function (bulletKnife) {
-            game.physics.arcade.collide(bulletKnife, boss, function () {
-                bulletKnife.kill();
-                bossShoted(1);
-            }, null, this);
-        });
-    
+    //colisao entre bullets e bosss
+    bulletsKnife.forEachAlive(function (bulletKnife) {
+        game.physics.arcade.collide(bulletKnife, boss, function () {
+            bulletKnife.kill();
+            bossHited(1);
+        }, null, this);
+    });
+
+
+    //colisao entre bullets e bosss
+    bulletsKnife.forEachAlive(function (bulletKnife) {
+        game.physics.arcade.collide(bulletKnife, gargola1, function () {
+            bulletKnife.kill();
+            gargolasHited(1, 1)
+        }, null, this);
+    });
+
+    bulletsKnife.forEachAlive(function (bulletKnife) {
+        game.physics.arcade.collide(bulletKnife, gargola2, function () {
+            bulletKnife.kill();
+            gargolasHited(2, 1)
+        }, null, this);
+    });
+
+    bulletsKnife.forEachAlive(function (bulletKnife) {
+        game.physics.arcade.collide(bulletKnife, gargola3, function () {
+            bulletKnife.kill();
+            gargolasHited(3, 1)
+        }, null, this);
+    });
+
+
+
 
 }
-function bossAtack(){
+
+//ataque do dragão
+function bossAtack() {
 
     bulletsBossGroup = game.add.group();
     bulletsBossGroup.enableBody = true;
@@ -83,16 +114,46 @@ function bossAtack(){
     game.physics.enable(bulletsBossGroup, Phaser.Physics.ARCADE);
 
 
-    loopBossAttack = game.time.events.loop(Phaser.Timer.SECOND * (game.rnd.integerInRange(2, 3)),bossFire, this);
-    
+    loopBossAttack = game.time.events.loop(Phaser.Timer.SECOND * (game.rnd.integerInRange(2, 3)), bossFire, this);
+
     function bossFire() {
-            bulletBoss = bulletsBossGroup.getFirstDead();
-            bulletBoss.body.setSize(40,40,10, 10);
-            bulletBoss.reset(boss.x + 230,boss.y + 100,'bossBullet');
-            game.physics.arcade.moveToObject(bulletBoss, mage, (game.rnd.integerInRange(150, 250)));
-            bulletAnim = bulletBoss.animations.add('fireEffect',[0,1,2,3,4,5,6,7,8,8,9,10]);
-            bulletBoss.animations.play('fireEffect', 15, true);
-            sounds.bossAtack.play();
+        bulletBoss = bulletsBossGroup.getFirstDead();
+        bulletBoss.body.setSize(40, 40, 10, 10);
+        bulletBoss.reset(boss.x + 230, boss.y + 100, 'bossBullet');
+        game.physics.arcade.moveToObject(bulletBoss, mage, (game.rnd.integerInRange(150, 250)));
+        bulletAnim = bulletBoss.animations.add('fireEffect', [0, 1, 2, 3, 4, 5, 6, 7, 8, 8, 9, 10]);
+        bulletBoss.animations.play('fireEffect', 15, true);
+        sounds.bossAtack.play();
     }
 }
-   
+
+var loopGargola1Attackl, oopGargola12ttack, loopGargola3Attack
+//ataque das gargolas
+function gargolaAttack() {
+
+    game.time.events.loop(Phaser.Timer.SECOND * 7, gargolaChase, this, 1);
+    game.time.events.loop(Phaser.Timer.SECOND * 8, gargolaChase, this, 2);
+    game.time.events.loop(Phaser.Timer.SECOND * 6, gargolaChase, this, 3);
+
+    function gargolaChase(n) {
+        switch (n) {
+            case 1:
+
+
+                break;
+
+            case 2:
+
+                break;
+
+            case 3:
+                //game.physics.arcade.moveToObject(gargola3, mage, 240);
+
+                break;
+
+        }
+
+
+    }
+
+}
