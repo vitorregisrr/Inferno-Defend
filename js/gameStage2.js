@@ -75,7 +75,4 @@ function atualizarState2() {
 }
 
 function render(){
-    game.debug.body(gargola1)
-    game.debug.body(gargola2)
-    game.debug.body(gargola3)
 }
