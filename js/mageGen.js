@@ -1,8 +1,10 @@
-var mageHp, magHpBar, marceline;
-
 function personagemGen() {
     mage = game.add.sprite(0, 0, 'mage');
     mage.anchor.setTo(0.35);
+    mage.maxHp = 10;
+    mage.hp = 10;
+    mage.hpBar = game.add.sprite(20,20, 'mageHpBar');
+    mage.hpBar.enableBody = true;
 
     /*MAGE FISICA */
     game.physics.arcade.enable(mage);
@@ -27,25 +29,7 @@ function personagemGen() {
 }
 
 function mageHpBarChange() {
-    if (mageHp == 1) {
-        mageHpBar.animations.frame = 4;
-    }
-
-    if (mageHp == 2) {
-        mageHpBar.animations.frame = 3;
-    }
-
-    if (mageHp == 3) {
-        mageHpBar.animations.frame = 2;
-    }
-
-    if (mageHp == 4) {
-        mageHpBar.animations.frame = 1;
-    }
-
-    if (mageHp == 5) {
-        mageHpBar.animations.frame = 0;
-    }
+   
 }
 
 function mageShoted(dano) {

@@ -53,7 +53,12 @@ var boss, flyBoss, bulletBoss, bulletsBossGroup, loopBossAttack, bulletAnim, bul
 
 function bossGen() {
         boss = game.add.sprite(0 - 300, 0 - 500, 'boss');
-        bossHp = 50;
+        boss.hp = 50;
+        boss.maxHp = 50;
+        boss.HpBarbg = game.add.sprite(620, 30, 'hpBarLGbg');
+        boss.HpBar = game.add.sprite(620, 150, 'hpBarLG');
+        boss.HpBar.anchor.setTo(0,1);
+        boss.HpBar.scale.setTo(1, 1);
         /*BOSS FISICA */
         game.physics.arcade.enable(boss);
         boss.body.immovable = true;
@@ -80,11 +85,11 @@ function bossGen() {
 
 //função que é chamada quando o boss leva algum ataque
 function bossHited(dano) {
-        bossHp -= dano;
-        if (bossHp == 0) {
+        boss.hp-= dano;
+        boss.HpBar.scale.setTo( boss.hp/boss.maxHp, 1);
+        if (boss.hp == 0) {
                 game.time.events.remove(loopBossAttack);
                 sounds.bossScreamPain.play();
-                bossHpBar.frame = 1;
                 //saida do boss do cenário
                 boss.animations.stop();
                 boss.animations.play('bossFly', 13, true);
@@ -129,17 +134,20 @@ function gargolas2Gen() {
         gargolas.setAll('body.immovable', true);
         //criar as gargolas
         gargola1 = gargolas.create(1200, 600, 'gargola');
-        gargola1.hp = 1;
+        gargola1.hp = 15;
+        gargola1.maxHp = 15;
         gargola1.body.setSize(80, 60, -10, 20);
         gargola1.body.immovable = true;
 
         gargola2 = gargolas.create(1200, 400, 'gargola');
-        gargola2.hp = 1;
+        gargola2.hp = 15;
+        gargola2.maxHp = 15;
         gargola2.body.setSize(80, 60, -10, 20);
         gargola2.body.immovable = true;
 
         gargola3 = gargolas.create(1200, 300, 'gargola');
-        gargola3.hp = 3;
+        gargola3.hp = 15;
+        gargola3.maxHp = 15;
         gargola3.body.setSize(80, 60, -10, 20);
         gargola3.body.immovable = true;
 
@@ -154,24 +162,20 @@ function gargolas2Gen() {
         gargola3.scale.x *= -1;
 
         //barras de hp
-        gargola1.HpBar = game.add.sprite(620, 30, 'hpBarGargola');
-        gargola1.HpBarText = game.add.text(660, 55, "15 / 15", {
-                font: "8px Arial",
-                fill: "#ffff"
-        });
+        gargola1.HpBarbg = game.add.sprite(620, 30, 'hpBarSMbg');
+        gargola1.HpBar = game.add.sprite(620, 30, 'hpBarSM');
+        gargola1.HpBar.anchor.setTo(0,1);
+        gargola1.HpBar.scale.setTo(1, 1);
 
-        gargola2.HpBar = game.add.sprite(620, 90, 'hpBarGargola');
-        gargola2.HpBarText = game.add.text(660, 115, "15/ 15", {
-                font: "8px Arial",
-                fill: "#ffff"
-        });
+        gargola2.HpBarbg = game.add.sprite(620, 30, 'hpBarSMbg');
+        gargola2.HpBar = game.add.sprite(620, 90, 'hpBarSM');
+        gargola2.HpBar.anchor.setTo(0,1);
+        gargola2.HpBar.scale.setTo(1, 1);
 
-        gargola3.HpBar = game.add.sprite(620, 150, 'hpBarGargola');
-        gargola3.HpBarText = game.add.text(660, 175, "15 / 15", {
-                font: "8px Arial",
-                fill: "#ffff"
-        });
-
+        gargola3.HpBarbg = game.add.sprite(620, 30, 'hpBarSMbg');
+        gargola3.HpBar = game.add.sprite(620, 150, 'hpBarSM');
+        gargola3.HpBar.anchor.setTo(0,1);
+        gargola3.HpBar.scale.setTo(1, 1);
 
 
         //animacoes
@@ -221,6 +225,7 @@ function gargolasHited(gargola, dano) {
         switch (gargola) {
                 case 1:
                         gargola1.hp -= dano;
+                        gargola1.HpBar.scale.setTo( gargola1.hp/gargola1.maxHp, 1);
                         if (gargola1.hp == 0) {
                                 gargola1.HpBar.frame = 1;
                                 setTimeout(function () {
@@ -228,21 +233,21 @@ function gargolasHited(gargola, dano) {
                                         gargola1.kill();
                                         gargolasMortas++;
                                         gargola1.HpBar.kill();
-                                        gargola1.HpBarText.destroy();
+                                        gargola1.HpBarbg.kill();
                                 }, 000);
                         }
                         break;
 
                 case 2:
                         gargola2.hp -= dano;
+                        gargola2.HpBar.scale.setTo( gargola2.hp/gargola2.maxHp, 1);
                         if (gargola2.hp == 0) {
-                                gargola2.HpBar.frame = 1;
                                 setTimeout(function () {
                                         game.time.events.remove(gargola2.ChaseLoop);
                                         gargola2.kill();
                                         gargolasMortas++;
                                         gargola2.HpBar.kill();
-                                        gargola2.HpBarText.destroy();
+                                        gargola2.HpBarbg.kill();
                                 }, 00);
                         }
                         break;
@@ -250,6 +255,7 @@ function gargolasHited(gargola, dano) {
                 case 3:
 
                         gargola3.hp -= dano;
+                        gargola3.HpBar.scale.setTo( gargola3.hp/gargola3.maxHp, 1);
                         if (gargola3.hp == 0) {
                                 gargola3.HpBar.frame = 1;
                                 game.time.events.remove(gargola3.ChaseLoop);
@@ -257,7 +263,7 @@ function gargolasHited(gargola, dano) {
                                         gargola3.kill();
                                         gargolasMortas++;
                                         gargola3.HpBar.kill();
-                                        gargola3.HpBarText.destroy();
+                                        gargola3.HpBarbg.kill();
                                 }, 000);
 
                         }
@@ -270,7 +276,7 @@ function gargolasHited(gargola, dano) {
 function gargolaAttack() {
 
         gargola1.ChaseLoop = game.time.events.loop(Phaser.Timer.SECOND * 8, gargolaChase, this, 1);
-        gargola2.ChaseLoop =  game.time.events.loop(Phaser.Timer.SECOND * 5, gargolaChase, this, 2);
+        gargola2.ChaseLoop = game.time.events.loop(Phaser.Timer.SECOND * 5, gargolaChase, this, 2);
         gargola3.ChaseLoop = game.time.events.loop(Phaser.Timer.SECOND * 10, gargolaChase, this, 3);
 
         function gargolaChase(n) {

@@ -29,12 +29,6 @@ function criarState4() {
     portalGen(650,70);
     lavaCreate();
 
-    bossHpBar = game.add.sprite(game.world.width - 230, 20, 'hpBarBoss');
-    bossHpBarText = game.add.text(game.world.width - 190, 50,"50 / 50", {
-        font: "17px Arial",
-        fill: "#ffff"});
-    mageHpBar = game.add.sprite(20,20,'hpBar');
-    
     sounds.lava.play();
     sounds.bossFlying.play();
     sounds.bossScream.play();
@@ -50,8 +44,12 @@ function atualizarState4() {
     mageHpBarChange();
     monstro1Moviment();
 
-    // atualiza o hpbar do boss
-    bossHpBarText.setText(bossHp+" / 50");
+        //hpbars seguindo os monstros
+        boss.HpBar.x = boss.x + 95;
+        boss.HpBar.y = boss.y + +36;
+        boss.HpBarbg.x = boss.x +95;
+        boss.HpBarbg.y = boss.y -3;
+
     /* PERSONAGENS E PLATAFORMAS COLISAO*/
     game.physics.arcade.collide(mage, plataformas);
     game.physics.arcade.collide(portal, plataformas);

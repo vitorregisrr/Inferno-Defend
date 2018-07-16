@@ -26,8 +26,6 @@ function criarState3() {
     lavaCreate();
     portalGen(650,70);
 
-    mageHpBar = game.add.sprite(20,20,'hpBar');
-
     sounds.lava.play();
     var lavaSoundLoop = game.time.events.loop(Phaser.Timer.SECOND * 2, function(){sounds.lava.play()}, this);
 
