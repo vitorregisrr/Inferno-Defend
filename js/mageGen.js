@@ -3,7 +3,7 @@ function personagemGen() {
     mage.anchor.setTo(0.35);
     mage.maxHp = 10;
     mage.hp = 10;
-    mage.hpBar = game.add.sprite(20,20, 'mageHpBar');
+    mage.hpBar = game.add.sprite(20,20, 'hpBarLG');
     mage.hpBar.enableBody = true;
 
     /*MAGE FISICA */

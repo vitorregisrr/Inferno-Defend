@@ -134,20 +134,20 @@ function gargolas2Gen() {
         gargolas.setAll('body.immovable', true);
         //criar as gargolas
         gargola1 = gargolas.create(1200, 600, 'gargola');
-        gargola1.hp = 15;
-        gargola1.maxHp = 15;
+        gargola1.hp = 5;
+        gargola1.maxHp = 5;
         gargola1.body.setSize(80, 60, -10, 20);
         gargola1.body.immovable = true;
 
         gargola2 = gargolas.create(1200, 400, 'gargola');
-        gargola2.hp = 15;
-        gargola2.maxHp = 15;
+        gargola2.hp = 5;
+        gargola2.maxHp = 5;
         gargola2.body.setSize(80, 60, -10, 20);
         gargola2.body.immovable = true;
 
         gargola3 = gargolas.create(1200, 300, 'gargola');
-        gargola3.hp = 15;
-        gargola3.maxHp = 15;
+        gargola3.hp = 5;
+        gargola3.maxHp = 5;
         gargola3.body.setSize(80, 60, -10, 20);
         gargola3.body.immovable = true;
 
