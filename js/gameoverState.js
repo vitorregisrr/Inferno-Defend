@@ -36,7 +36,6 @@ function criarGameOver()
 }
 
 function replay() {
-    gameOverStatus = false;
     game.state.start('gameState1');
 }
 

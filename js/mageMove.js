@@ -14,7 +14,7 @@ function mageMove() {
 
     /* Movimentacao mage */
     mage.body.velocity.x = 0;
-    if(mageHp > 0 ){
+    if(mage.hp > 0 ){
     if (cursors.left.isDown || leftButton.isDown) {
         mage.scale.setTo(-1, 1);
         mage.body.velocity.x = -150;

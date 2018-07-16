@@ -17,7 +17,7 @@ function bulletsGen() {
 }
 
 function fire() {
-    if(mageHp > 0){
+    if(mage.hp > 0){
         if (game.time.now > nextFire && bulletsKnife.countDead() > 0) {
             mage.animations.play('atack', 10);
             nextFire = game.time.now + fireRate;
