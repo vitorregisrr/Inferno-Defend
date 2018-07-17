@@ -97,6 +97,15 @@ function bulletsCollide() {
     });
 
 
+for(var x=0; x<= fireElementals.bodys.length -1; x++){
+    bulletsKnife.forEachAlive(function (bulletKnife) {
+        game.physics.arcade.collide(bulletKnife, fireElementals.group, function () {
+            bulletKnife.kill();
+            fireElementals.hited(1,fireElementals.bodys[x]);
+        }, null, this);
+    });
+}
+
 
 
 }

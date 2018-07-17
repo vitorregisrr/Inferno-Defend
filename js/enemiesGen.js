@@ -1,7 +1,9 @@
 var monstros1, monstro1, loopMonstro1, monstro1Speed, monstro1Interval;
+var inimigos;
 //gera as mosquinhas
 function monstro1Gen() {
 
+        inimigos = game.add.group();
         monstros1 = game.add.group();
         monstros1.enableBody = true;
         loopMonstro1 = game.time.events.loop(monstro1Interval, monstro1LoopCreate, this);
@@ -113,6 +115,7 @@ var gargolasMortas = 0;
 
 function gargolas2Gen() {
         gargolas = game.add.group();
+        inimigos.add(gargolas);
         gargolasMortas = 0;
 
         gargolas.colision = false;
@@ -351,5 +354,38 @@ function gargolaAttack() {
 
 
                 }
+        }
+}
+
+var fireElementals = new Object();
+
+fireElementals.presets = function(){
+        this.group = game.add.group();
+        game.physics.arcade.enable(this.group);
+        this.group.enableBody = true;
+        this.bodys = new Array();
+}
+
+fireElementals.possets = function(){
+        this.group.callAll('animations.add', 'animations', 'fly', [0 , 1, 2, 3, 4], 9, true);
+        this.group.callAll('animations.add', 'animations', 'dead', [0, 1, 2, 3, 4], 10, true);
+        this.group.callAll('animations.add', 'animations', 'attack', [20, 21, 23, 24,25], 9, true);
+        this.group.callAll('animations.add', 'animations', 'hited', [26,27,29,29,30], 9, true);
+        this.group.callAll('play', null, 'fly'); 
+        this.group.setAll('body.immovable', true);
+}
+
+fireElementals.gen = function(x,y,maxHp){
+        this.bodys.push(this.group.create(x,y, 'fireElemental'));
+        this.bodys[this.bodys.length-1].body.setSize(70, 90, 50, 35);
+        this.bodys[this.bodys.length -1].maxHp = maxHp;
+        this.bodys[this.bodys.length -1].hp = maxHp;
+}
+
+fireElementals.hited = function(demage,body){
+       body.hp -= demage;
+       console.log(body.hp)
+        if(body.hp < 0){
+                body.kill();
         }
 }

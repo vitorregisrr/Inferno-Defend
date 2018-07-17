@@ -1,6 +1,7 @@
 var gameState3 = {
     create: criarState3,
     update: atualizarState3,
+    render: render,
 };
 
 var anim, plataformas, background, cursors, score;
@@ -26,6 +27,12 @@ function criarState3() {
     lavaCreate();
     portalGen(650,70);
 
+   fireElementals.presets();
+   fireElementals.gen(200,200,10);
+   fireElementals.gen(700,200,10);
+   fireElementals.possets();
+
+
     sounds.lava.play();
     var lavaSoundLoop = game.time.events.loop(Phaser.Timer.SECOND * 2, function(){sounds.lava.play()}, this);
 
@@ -42,4 +49,9 @@ function atualizarState3() {
     game.physics.arcade.overlap(portal, mage, setDificulty4, null, this);
 
 
+}
+
+function render(){
+    game.debug.body(fireElementals.bodys[1]);
+    game.debug.body(fireElementals.bodys[0]);
 }

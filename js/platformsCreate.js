@@ -5,6 +5,7 @@ var animLava;
 function platformsCreate(){
     plataformas = game.add.group();
     plataformas.enableBody = true;
+    // nao funciona essa porra plataformas.callAll('body.setSize', '',120, 10, 8, 35);
 
     chao1 = plataformas.create(0, -323, 'chao1');
     chao2 = plataformas.create(0 - chao1.width,0 - chao1.height, 'chao1');
@@ -18,7 +19,6 @@ function platformsCreate(){
     chao10 = plataformas.create(0 - chao5.width,0 - chao5.height, 'chao2');
     chao11 = plataformas.create(0 - chao5.width,0 - 500, 'chao3');
 
-    
     chao1.body.setSize(120, 10, 8, 35);
     chao2.body.setSize(120, 10, 8, 35);
     chao3.body.setSize(120, 10, 8, 35);

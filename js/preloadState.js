@@ -80,10 +80,12 @@ function precarregarPreload() {
     game.load.image('hpBarLGbg', 'assets/HpBars/hpBarLGbg.png');
     game.load.image('hpBarLONG', 'assets/HpBars/hpBarLONG.png');
     game.load.image('hpBarLONGbg', 'assets/HpBars/hpBarLONGbg.png');
+
     //inimigos
     game.load.spritesheet('boss', 'assets/monstros/boss.png', 360, 275, 6);
     game.load.spritesheet('monstro1', 'assets/monstros/monstro1.png', 48, 45);
     game.load.spritesheet('gargola', 'assets/monstros/gargola.png', 150, 126, 5);
+    game.load.spritesheet('fireElemental', 'assets/monstros/fireElemental.png', 160, 168);
 
     //backgrounds
     game.load.spritesheet('background', 'assets/backgrounds/background.png', 800, 600, 8);
