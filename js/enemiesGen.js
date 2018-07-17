@@ -68,8 +68,9 @@ function bossGen() {
         boss.animations.play('bossFly', 15, true);
         boss.body.setSize(boss.height - 190, boss.width - 160, 180, 20);
 
+        //entrada do boss no cenário
         game.time.events.add(900, function () {
-                game.physics.arcade.moveToXY(boss, 30, 30, 100, 4000);
+                game.physics.arcade.moveToXY(boss, 30, 120, 100, 4000);
                 game.time.events.add(4000, function () {
                         boss.body.velocity.y = 0;
                         boss.body.velocity.x = 0;
@@ -78,15 +79,13 @@ function bossGen() {
                 }, this);
         }, this)
 
-
-        //entrada do boss no cenário
-
 }
 
 //função que é chamada quando o boss leva algum ataque
 function bossHited(dano) {
         boss.hp-= dano;
-        boss.HpBar.scale.setTo( boss.hp/boss.maxHp, 1);
+        this.game.add.tween(boss.HpBar.scale).to({x: boss.hp/boss.maxHp, y: 1}, 600, Phaser.Easing.Linear.None, true);
+        boss.HpBar.x += 1;
         if (boss.hp == 0) {
                 game.time.events.remove(loopBossAttack);
                 sounds.bossScreamPain.play();
@@ -225,7 +224,8 @@ function gargolasHited(gargola, dano) {
         switch (gargola) {
                 case 1:
                         gargola1.hp -= dano;
-                        gargola1.HpBar.scale.setTo( gargola1.hp/gargola1.maxHp, 1);
+                        this.game.add.tween(gargola1.HpBar.scale).to({x: gargola1.hp/gargola1.maxHp, y: 1}, 600, Phaser.Easing.Linear.None, true);
+                        gargola1.HpBar.x += 1;
                         if (gargola1.hp == 0) {
                                 gargola1.HpBar.frame = 1;
                                 setTimeout(function () {
@@ -240,7 +240,8 @@ function gargolasHited(gargola, dano) {
 
                 case 2:
                         gargola2.hp -= dano;
-                        gargola2.HpBar.scale.setTo( gargola2.hp/gargola2.maxHp, 1);
+                        this.game.add.tween(gargola2.HpBar.scale).to({x: gargola2.hp/gargola2.maxHp, y: 1}, 600, Phaser.Easing.Linear.None, true);
+                        gargola2.HpBar.x += 1;
                         if (gargola2.hp == 0) {
                                 setTimeout(function () {
                                         game.time.events.remove(gargola2.ChaseLoop);
@@ -255,7 +256,8 @@ function gargolasHited(gargola, dano) {
                 case 3:
 
                         gargola3.hp -= dano;
-                        gargola3.HpBar.scale.setTo( gargola3.hp/gargola3.maxHp, 1);
+                        this.game.add.tween(gargola3.HpBar.scale).to({x: gargola3.hp/gargola3.maxHp, y: 1}, 600, Phaser.Easing.Linear.None, true);
+                        gargola3.HpBar.x += 1;
                         if (gargola3.hp == 0) {
                                 gargola3.HpBar.frame = 1;
                                 game.time.events.remove(gargola3.ChaseLoop);

@@ -78,6 +78,8 @@ function precarregarPreload() {
     game.load.image('hpBarSMbg', 'assets/HpBars/hpBarSMbg.png');
     game.load.image('hpBarLG', 'assets/HpBars/hpBarLG.png');
     game.load.image('hpBarLGbg', 'assets/HpBars/hpBarLGbg.png');
+    game.load.image('hpBarLONG', 'assets/HpBars/hpBarLONG.png');
+    game.load.image('hpBarLONGbg', 'assets/HpBars/hpBarLONGbg.png');
     //inimigos
     game.load.spritesheet('boss', 'assets/monstros/boss.png', 360, 275, 6);
     game.load.spritesheet('monstro1', 'assets/monstros/monstro1.png', 48, 45);

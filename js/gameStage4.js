@@ -41,7 +41,6 @@ function criarState4() {
 function atualizarState4() {
     mageMove();
     bulletsCollide();
-    mageHpBarChange();
     monstro1Moviment();
 
         //hpbars seguindo os monstros

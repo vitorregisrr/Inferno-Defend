@@ -3,8 +3,10 @@ function personagemGen() {
     mage.anchor.setTo(0.35);
     mage.maxHp = 10;
     mage.hp = 10;
-    mage.hpBar = game.add.sprite(20,20, 'hpBarLG');
-    mage.hpBar.enableBody = true;
+    mage.HpBarbg = game.add.sprite(30, 20, 'hpBarLONGbg');
+    mage.HpBar = game.add.sprite(32, 65, 'hpBarLONG');
+    mage.HpBar.anchor.setTo(0,1);
+    mage.HpBar.scale.setTo(1, 1);
 
     /*MAGE FISICA */
     game.physics.arcade.enable(mage);
@@ -28,18 +30,17 @@ function personagemGen() {
 
 }
 
-function mageHpBarChange() {
-   
-}
-
-function mageShoted(dano) {
+function mageShoted(dano,lavaCont) {
     mage.hp -= dano;
     if(mage.hp > 1 ){
         mage.animations.play('hited', 10, false);
+        this.game.add.tween(mage.HpBar.scale).to({x: mage.hp/mage.maxHp , y: 1}, 600, Phaser.Easing.Linear.None, true);
+        mage.HpBar.x += 1;
     }
-    if (mage.hp == 0) {
+    if (mage.hp < 0 ) {
         mage.animations.play('die', 5, false)
         game.time.events.add(1500,function(){gameOver()});
+        mage.HpBar.kill();
     }
     sounds.atacked.play();
 }

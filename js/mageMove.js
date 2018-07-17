@@ -1,5 +1,5 @@
 var mage;
-
+var e = 1;
 function addControls() {
     /*controles WASD */
     upButton = game.input.keyboard.addKey(Phaser.Keyboard.W);
@@ -9,8 +9,7 @@ function addControls() {
 }
 
 function mageMove() {
-
-    game.physics.arcade.overlap(mage, lavaGroup, gameOver, null, this);
+    game.physics.arcade.overlap(mage, lavaGroup,  gameOver, null,  this);
 
     /* Movimentacao mage */
     mage.body.velocity.x = 0;

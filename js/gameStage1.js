@@ -33,7 +33,6 @@ function criarState1() {
 function atualizarState1() {
     mageMove();
     bulletsCollide();
-    mageHpBarChange();
     monstro1Moviment();
 
     /* PERSONAGENS E PLATAFORMAS COLISAO*/

@@ -78,4 +78,7 @@ function portalGen(x,y){
      animLava = lava.animations.add('animLava');
      animLava.play(10, true);
 
+     game.world.bringToTop(mage.HpBarbg);
+     game.world.bringToTop(mage.HpBar);
+
  }
