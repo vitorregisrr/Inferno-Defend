@@ -2,7 +2,7 @@ function personagemGen() {
     mage = game.add.sprite(0, 0, 'mage');
     mage.anchor.setTo(0.35);
     mage.maxHp = 10;
-    mage.hp = 10;
+    mage.hp = mage.maxHp;
     mage.HpBarbg = game.add.sprite(30, 20, 'hpBarLONGbg');
     mage.HpBar = game.add.sprite(32, 65, 'hpBarLONG');
     mage.HpBar.anchor.setTo(0,1);
@@ -30,7 +30,7 @@ function personagemGen() {
 
 }
 
-function mageShoted(dano,lavaCont) {
+function mageShoted(dano) {
     mage.hp -= dano;
     if(mage.hp > 1 ){
         mage.animations.play('hited', 10, false);

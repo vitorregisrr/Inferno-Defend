@@ -1,4 +1,4 @@
-var fireRate = 600;
+var fireRate = 550;
 var nextFire = 0;
 var bulletsKnife, bulletKnife;
 var monstros1Colision;
@@ -17,7 +17,7 @@ function bulletsGen() {
 }
 
 function fire() {
-    if(mage.hp > 0){
+    if (mage.hp > 0) {
         if (game.time.now > nextFire && bulletsKnife.countDead() > 0) {
             mage.animations.play('atack', 10);
             nextFire = game.time.now + fireRate;
@@ -97,16 +97,21 @@ function bulletsCollide() {
     });
 
 
-for(var x=0; x<= fireElementals.bodys.length -1; x++){
-    bulletsKnife.forEachAlive(function (bulletKnife) {
-        game.physics.arcade.collide(bulletKnife, fireElementals.group, function () {
-            bulletKnife.kill();
-            fireElementals.hited(1,fireElementals.bodys[x]);
-        }, null, this);
-    });
-}
+    for (var x = 0; x <= fireElementals.bodys.length - 1; x++) {
+        bulletsKnife.forEachAlive(function (bulletKnife) {
+            game.physics.arcade.collide(bulletKnife, fireElementals.bodys[x], function () {
+                bulletKnife.kill();
+                fireElementals.hited(1, fireElementals.bodys[x]);
+            }, null, this);
+        });
+    }
 
-
+    for (var x = 0; x <= fireElementals.bodys.length - 1; x++) {
+        game.physics.arcade.collide(fireElementals.bodys[x].bulletsGroup, mage, function () {
+            fireElementals.bodys[x].bullet.kill();
+            mageShoted(fireElementals.bodys[x].demage);
+        });
+    }
 
 }
 
@@ -126,6 +131,7 @@ function bossAtack() {
 
     function bossFire() {
         bulletBoss = bulletsBossGroup.getFirstDead();
+        bulletBoss.rotation = Math.atan2(mage.y - bulletBoss.y, mage.x + -bulletBoss.x);
         bulletBoss.body.setSize(40, 40, 10, 10);
         bulletBoss.reset(boss.x + 230, boss.y + 100, 'bossBullet');
         game.physics.arcade.moveToObject(bulletBoss, mage, (game.rnd.integerInRange(150, 250)));

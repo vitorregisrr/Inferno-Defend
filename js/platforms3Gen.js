@@ -9,9 +9,9 @@
     chao4.x = 630;
     chao4.y = 430;
     chao5.x = 230;
-    chao5.y = 130;
+    chao5.y = -100;
     chao6.x = 430;
-    chao6.y = 170;
+    chao6.y = -100;
     /*portal FISICA */
      //move as plataformas para cima e para baixo, usando um contador que reveza entre up e down
      var loopPlatforms = game.time.events.loop(Phaser.Timer.SECOND * 1, movePlatforms3, this);
@@ -39,3 +39,13 @@
 
  }
  /* //PLATAFORMAS */
+
+ function comedownPlatforms3(){
+    game.physics.arcade.moveToXY(chao5, chao5.x, 230, 100 ,3000); 
+    game.physics.arcade.moveToXY(chao6, chao6.x, 270, 200 ,3000);
+
+    game.time.events.add(3000, function () {
+        chao5.body.velocity.y = 0;
+        chao6.body.velocity.y = 0;
+     }, this);
+}

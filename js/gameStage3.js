@@ -28,8 +28,8 @@ function criarState3() {
     portalGen(650,70);
 
    fireElementals.presets();
-   fireElementals.gen(200,200,10);
-   fireElementals.gen(700,200,10);
+   fireElementals.gen(500,110, 10, 3, 1,'left');
+   fireElementals.gen(600, 210, 10, 5, 2,'left');
    fireElementals.possets();
 
 
@@ -48,10 +48,11 @@ function atualizarState3() {
     game.physics.arcade.collide(portal, plataformas);
     game.physics.arcade.overlap(portal, mage, setDificulty4, null, this);
 
+    if(fireElementals.deads == 2){
+        comedownPlatforms3();
+    }
 
 }
 
 function render(){
-    game.debug.body(fireElementals.bodys[1]);
-    game.debug.body(fireElementals.bodys[0]);
 }

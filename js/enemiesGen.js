@@ -364,28 +364,88 @@ fireElementals.presets = function(){
         game.physics.arcade.enable(this.group);
         this.group.enableBody = true;
         this.bodys = new Array();
+        this.deads = 0;
 }
 
 fireElementals.possets = function(){
         this.group.callAll('animations.add', 'animations', 'fly', [0 , 1, 2, 3, 4], 9, true);
-        this.group.callAll('animations.add', 'animations', 'dead', [0, 1, 2, 3, 4], 10, true);
+        this.group.callAll('animations.add', 'animations', 'dead', [30,31,32,33,34], 10, true);
         this.group.callAll('animations.add', 'animations', 'attack', [20, 21, 23, 24,25], 9, true);
         this.group.callAll('animations.add', 'animations', 'hited', [26,27,29,29,30], 9, true);
         this.group.callAll('play', null, 'fly'); 
         this.group.setAll('body.immovable', true);
 }
 
-fireElementals.gen = function(x,y,maxHp){
+fireElementals.gen = function(x, y, maxHp, attackInterval, demage, direction){
         this.bodys.push(this.group.create(x,y, 'fireElemental'));
-        this.bodys[this.bodys.length-1].body.setSize(70, 90, 50, 35);
-        this.bodys[this.bodys.length -1].maxHp = maxHp;
-        this.bodys[this.bodys.length -1].hp = maxHp;
+        e= this.bodys[this.bodys.length -1];
+        e.demage = demage;
+        e.maxHp = maxHp;
+        e.hp = maxHp;
+        e.dead = false;
+
+        e.HpBarbg = game.add.sprite(x - e.width/3, y - e.height/3 - 15, 'hpBarSMbg');
+        e.HpBar = game.add.sprite(x - e.width/3 ,y - e.height/3, 'hpBarSM');
+
+        e.bulletsGroup = game.add.group();
+        e.bulletsGroup.enableBody = true;
+    
+        e.bulletsGroup.createMultiple(50, 'elementalBullet');
+        e.bulletsGroup.setAll('checkWorldBounds', true);
+        e.bulletsGroup.setAll('outOfBoundsKill', true);
+        game.physics.enable( e.bulletsGroup, Phaser.Physics.ARCADE);
+
+        e.anchor.setTo(.5, .5);
+        if(direction == 'right'){
+                e.scale.x *= 1;
+                e.body.setSize(70, 90, 0, 5);
+
+        }else if(direction == 'left'){
+                e.scale.x *= -1;
+                e.body.setSize(70, 90, 0, 5);
+        }
+
+        //e.Hpbarbg = e.addChild(game.make.sprite(x + 20, y, 'hpBarSMbg'));
+        //e.Hpbar = e.addChild(game.make.sprite(x + 20 ,y + 15, 'hpBarSM'));
+
+        e.HpBar.anchor.setTo(0,1);
+        e.HpBar.scale.setTo(1, 1);
+
+        e.attackLoop = game.time.events.loop(Phaser.Timer.SECOND * attackInterval, fireElementals.attack, this, e);
 }
 
-fireElementals.hited = function(demage,body){
-       body.hp -= demage;
-       console.log(body.hp)
-        if(body.hp < 0){
-                body.kill();
+fireElementals.hited = function(demage,e){
+
+        if(e.hp > 0){
+                e.hp -= demage;
+                game.add.tween(e.HpBar.scale).to({x: e.hp/e.maxHp, y: 1}, 600, Phaser.Easing.Linear.None, true);
+                e.HpBar.x += 0.4;
+                console.log(e.hp)
         }
+
+        if(e.hp <= 0 && !e.dead ){
+                e.dead = true;
+                fireElementals.deads++;
+                game.time.events.remove(e.attackLoop);
+                e.animations.play('dead',10,false);
+                game.time.events.add(700,function(){
+                        e.kill();
+                        e.HpBar.kill();
+                        e.HpBarbg.kill();
+                });
+        }
+}
+
+fireElementals.attack = function(e){
+        
+        e.bullet = e.bulletsGroup.getFirstDead();
+        e.bullet.rotation = Math.atan2(mage.y - e.bullet.y, mage.x + - e.bullet.x);
+        e.bullet.body.setSize(20, 20, 3, 3);
+        e.bullet.reset(e.x + -40, e.y + 5, 'bossBullet');
+        game.physics.arcade.moveToObject(e.bullet, mage, (game.rnd.integerInRange(150, 250)));
+        bulletAnim = e.bullet.animations.add('fireEffect', [0, 1, 2, 3, 4]);
+        e.animations.play('attack',9,false);
+        game.time.events.add(400, function(){e.animations.play('fly',10,true)}, this);
+        
+        e.bullet.animations.play('fireEffect', 20, true);
 }
