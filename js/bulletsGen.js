@@ -97,6 +97,7 @@ function bulletsCollide() {
     });
 
 
+if(fireElementals.bodys){
     for (var x = 0; x <= fireElementals.bodys.length - 1; x++) {
         bulletsKnife.forEachAlive(function (bulletKnife) {
             game.physics.arcade.collide(bulletKnife, fireElementals.bodys[x], function () {
@@ -112,6 +113,8 @@ function bulletsCollide() {
             mageShoted(fireElementals.bodys[x].demage);
         });
     }
+}
+
 
 }
 
