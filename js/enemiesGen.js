@@ -390,7 +390,7 @@ fireElementals.gen = function(x, y, maxHp, attackInterval, demage, direction){
         e.bulletsGroup = game.add.group();
         e.bulletsGroup.enableBody = true;
     
-        e.bulletsGroup.createMultiple(50, 'elementalBullet');
+        e.bulletsGroup.createMultiple(5, 'elementalBullet');
         e.bulletsGroup.setAll('checkWorldBounds', true);
         e.bulletsGroup.setAll('outOfBoundsKill', true);
         game.physics.enable( e.bulletsGroup, Phaser.Physics.ARCADE);
@@ -437,7 +437,6 @@ fireElementals.hited = function(demage,e){
 }
 
 fireElementals.attack = function(e){
-        
         e.bullet = e.bulletsGroup.getFirstDead();
         e.bullet.rotation = Math.atan2(mage.y - e.bullet.y, mage.x + - e.bullet.x);
         e.bullet.body.setSize(20, 20, 3, 3);
@@ -446,6 +445,5 @@ fireElementals.attack = function(e){
         bulletAnim = e.bullet.animations.add('fireEffect', [0, 1, 2, 3, 4]);
         e.animations.play('attack',9,false);
         game.time.events.add(400, function(){e.animations.play('fly',10,true)}, this);
-        
         e.bullet.animations.play('fireEffect', 20, true);
 }

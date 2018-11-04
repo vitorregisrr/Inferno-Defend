@@ -98,21 +98,21 @@ function bulletsCollide() {
 
 
 if(fireElementals.bodys){
-    for (var x = 0; x <= fireElementals.bodys.length - 1; x++) {
+    fireElementals.group.forEachAlive(function (e) {
         bulletsKnife.forEachAlive(function (bulletKnife) {
-            game.physics.arcade.collide(bulletKnife, fireElementals.bodys[x], function () {
+            game.physics.arcade.collide(bulletKnife, e, function () {
                 bulletKnife.kill();
-                fireElementals.hited(1, fireElementals.bodys[x]);
+                fireElementals.hited(1, e);
             }, null, this);
         });
-    }
+    });
 
-    for (var x = 0; x <= fireElementals.bodys.length - 1; x++) {
-        game.physics.arcade.collide(fireElementals.bodys[x].bulletsGroup, mage, function () {
-            fireElementals.bodys[x].bullet.kill();
-            mageShoted(fireElementals.bodys[x].demage);
+    fireElementals.group.forEachAlive(function (e) {
+        game.physics.arcade.collide(e.bulletsGroup, mage, function () {
+            e.bullet.kill();
+            mageShoted(e.demage);
         });
-    }
+    });
 }
 
 
